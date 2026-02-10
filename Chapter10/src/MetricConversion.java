@@ -10,6 +10,7 @@ import java.awt.SystemColor;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ListCellRenderer;
 
 public class MetricConversion {
 
@@ -57,13 +58,15 @@ public class MetricConversion {
 		title.setBounds(20, 11, 209, 36);
 		panel.add(title);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBackground(SystemColor.textHighlight);
-		comboBox.setForeground(new Color(64, 0, 128));
-		comboBox.setFont(new Font("Serif", Font.PLAIN, 14));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Inches To Centimeters", "Feet To Meters", "Gallons To Meters", "Pounds To Kilograms"}));
-		comboBox.setBounds(20, 103, 184, 29);
-		panel.add(comboBox);
+		JComboBox convert = new JComboBox();
+		convert.setBackground(SystemColor.textHighlight);
+		convert.setForeground(new Color(64, 0, 128));
+		convert.setFont(new Font("Serif", Font.PLAIN, 14));
+		convert.setModel(new DefaultComboBoxModel(new String[] {"Inches To Centimeters", "Feet To Meters", "Gallons To Meters", "Pounds To Kilograms"}));
+		convert.setBounds(20, 103, 184, 29);
+		panel.add(convert);
+		
+		convert.setSelectionBackground();
 		
 		JLabel prompt = new JLabel("Select A Conversion Type");
 		prompt.setFont(new Font("Serif", Font.BOLD, 15));
