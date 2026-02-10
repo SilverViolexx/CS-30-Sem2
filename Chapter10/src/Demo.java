@@ -63,7 +63,7 @@ public class Demo {
 		fName = new JTextField();
 		fName.setBackground(new Color(249, 242, 255));
 		fName.addKeyListener(new KeyAdapter() {
-			@Override
+			//Override OG text
 			public void keyTyped(KeyEvent e) 
 			{
 				if(fName.getText().equals("First Name: "))
@@ -78,7 +78,7 @@ public class Demo {
 		lName = new JTextField();
 		lName.setBackground(new Color(249, 242, 255));
 		lName.addKeyListener(new KeyAdapter() {
-			@Override
+			//Override OG text
 			public void keyTyped(KeyEvent e) {
 				if(lName.getText().equals("Last Name: "))
 					lName.setText("");
@@ -89,31 +89,82 @@ public class Demo {
 		lName.setText("Last Name: ");
 		lName.setColumns(10);
 		
-		JButton submit = new JButton("Submit");
-		submit.setBackground(new Color(249, 242, 255));
-		submit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		submit.setFont(new Font("Serif", Font.BOLD, 15));
-		submit.setForeground(new Color(64, 0, 128));
-		submit.setToolTipText("");
-		
 		JComboBox grade = new JComboBox();
 		grade.setBackground(new Color(249, 242, 255));
 		grade.setForeground(new Color(64, 0, 128));
 		grade.setFont(new Font("Serif", Font.BOLD, 15));
 		grade.setModel(new DefaultComboBoxModel(new String[] {"Select Grade Level:", "10", "11", "12"}));
+
 		
 		school = new JComboBox();
 		school.setBackground(new Color(249, 242, 255));
-		school.setModel(new DefaultComboBoxModel(new String[] {"Select Your School:", "Crescent ", "Western", "Pearson", "Churchill"}));
+		school.setModel(new DefaultComboBoxModel(new String[] {"Select Your School:", "Crescent", "Western", "Pearson", "Churchill"}));
 		school.setForeground(new Color(64, 0, 128));
 		school.setFont(new Font("Serif", Font.BOLD, 15));
 		
-		JTextArea textBox = new JTextArea();
-		textBox.setBackground(new Color(249, 242, 255));
+		JTextArea dis = new JTextArea();
+		dis.setFont(new Font("Serif", Font.BOLD, 15));
+		dis.setForeground(new Color(64, 0, 128));
+		dis.setBackground(new Color(249, 242, 255));
 		GroupLayout gl_panel = new GroupLayout(panel);
+		
+		JButton submit = new JButton("Submit");
+		submit.setBackground(new Color(249, 242, 255));
+		submit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				String fn = fName.getText();
+				String ln = lName.getText();
+				String grd = "";
+				String schl = "";
+					
+				
+				//Grade level
+				if(grade.getSelectedItem().equals("12"))
+				{
+					grd = "12";
+				}
+				else if(grade.getSelectedItem().equals("11"))
+				{
+					grd = "11";
+				}
+				else
+				{
+					grd = "10";
+				}
+				
+				//School
+				if(school.getSelectedItem().equals("Crescent"))
+				{
+					schl = "Crescent";
+				}
+				else if(school.getSelectedItem().equals("Pearson"))
+				{
+					schl = "Pearson";
+				}
+				else if(school.getSelectedItem().equals("Western"))
+				{
+					schl = "Western";
+				}
+				else
+				{
+					schl = "Churchill";
+				}
+				
+				//Display information
+				dis.setText(" " + fn + " " + ln
+						+ " is in grade " + grd
+						+ " and goes to "
+						+ schl + ".");
+						
+			}
+			
+		});
+		submit.setFont(new Font("Serif", Font.BOLD, 15));
+		submit.setForeground(new Color(64, 0, 128));
+		submit.setToolTipText("");
+		
+		
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
@@ -124,7 +175,7 @@ public class Demo {
 							.addContainerGap())
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-								.addComponent(textBox, Alignment.LEADING)
+								.addComponent(dis, Alignment.LEADING)
 								.addComponent(school, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
 								.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
 									.addComponent(fName, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
@@ -133,6 +184,8 @@ public class Demo {
 								.addComponent(grade, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
 							.addContainerGap(194, Short.MAX_VALUE))))
 		);
+		
+		
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
@@ -145,7 +198,7 @@ public class Demo {
 					.addGap(18)
 					.addComponent(school, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 					.addGap(27)
-					.addComponent(textBox, GroupLayout.PREFERRED_SIZE, 133, GroupLayout.PREFERRED_SIZE)
+					.addComponent(dis, GroupLayout.PREFERRED_SIZE, 133, GroupLayout.PREFERRED_SIZE)
 					.addGap(33)
 					.addComponent(submit, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
 					.addGap(104))
