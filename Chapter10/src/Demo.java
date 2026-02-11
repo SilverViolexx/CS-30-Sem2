@@ -10,9 +10,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JComboBox;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
@@ -52,6 +52,11 @@ public class Demo {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		//Adding icons - using generic directory
+		ImageIcon w = new ImageIcon("../Chapter10/src/Western HS.png"); //need to include .. at start
+		ImageIcon c = new ImageIcon("../Chapter10/src/Crescent HS.png");
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 610, 498);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -137,6 +142,7 @@ public class Demo {
 				if(school.getSelectedItem().equals("Crescent"))
 				{
 					schl = "Crescent";
+					//pic.setIcon(c); pic = label box
 				}
 				else if(school.getSelectedItem().equals("Pearson"))
 				{
@@ -145,6 +151,7 @@ public class Demo {
 				else if(school.getSelectedItem().equals("Western"))
 				{
 					schl = "Western";
+					//pic.setIcon(w); pic = label box
 				}
 				else
 				{
