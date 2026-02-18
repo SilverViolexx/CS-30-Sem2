@@ -9,7 +9,9 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class SemesterAvg {
 
@@ -56,6 +58,7 @@ public class SemesterAvg {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
+		//Prompts to input grade
 		JLabel gradePrompt = new JLabel("Enter The First Grade:");
 		gradePrompt.setFont(new Font("Serif", Font.BOLD, 15));
 		gradePrompt.setForeground(new Color(64, 0, 128));
@@ -74,34 +77,13 @@ public class SemesterAvg {
 		gradePrompt3.setBounds(21, 138, 165, 20);
 		panel.add(gradePrompt3);
 		
+		//Where grades are inputed
 		grade1 = new JTextField();
 		grade1.setForeground(new Color(64, 0, 128));
 		grade1.setFont(new Font("Serif", Font.BOLD, 15));
 		grade1.setBounds(236, 27, 165, 28);
 		panel.add(grade1);
 		grade1.setColumns(10);
-		
-		JButton submit = new JButton("Average");
-		submit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String g1 = grade1.getText();
-				String g2 = grade2.getText();
-				String g3 = grade3.getText();
-				
-				double avg = (Double.parseDouble(g1) + Double.parseDouble(g2) + Double.parseDouble(g3)) / 3;
-				
-				
-				
-				
-				//ROUND TO 2 DECIMALS
-				average.setText(" Your average is: " + Math.round(avg));
-				
-			}
-		});
-		submit.setForeground(new Color(64, 0, 128));
-		submit.setFont(new Font("Serif", Font.BOLD, 15));
-		submit.setBounds(21, 196, 156, 33);
-		panel.add(submit);
 		
 		grade2 = new JTextField();
 		grade2.setForeground(new Color(64, 0, 128));
@@ -117,11 +99,38 @@ public class SemesterAvg {
 		grade3.setBounds(236, 140, 165, 28);
 		panel.add(grade3);
 		
+		//Where average grade is displayed
 		average = new JTextField();
 		average.setForeground(new Color(64, 0, 128));
 		average.setFont(new Font("Serif", Font.BOLD, 15));
 		average.setColumns(10);
-		average.setBounds(191, 196, 156, 33);
+		average.setBounds(191, 196, 210, 33);
 		panel.add(average);
+		
+		//Submit button to display average
+		JButton submit = new JButton("Average");
+		submit.setBackground(new Color(245, 236, 255));
+		submit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String g1 = grade1.getText();
+				String g2 = grade2.getText();
+				String g3 = grade3.getText();
+				
+				//Calculates average
+				double avg = (Double.parseDouble(g1) + Double.parseDouble(g2) + Double.parseDouble(g3)) / 3;
+				
+				//Rounds to 2 decimal places
+				DecimalFormat df = new DecimalFormat("#0.00");
+
+				//Displays average
+				average.setText(" Your average is: " + df.format(avg));
+				
+			}
+		});
+		submit.setForeground(new Color(64, 0, 128));
+		submit.setFont(new Font("Serif", Font.BOLD, 15));
+		submit.setBounds(21, 196, 156, 33);
+		panel.add(submit);
+		
 	}
 }
