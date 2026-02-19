@@ -1,3 +1,4 @@
+package Skillbuilder;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -54,8 +55,8 @@ public class Demo {
 	private void initialize() {
 		
 		//Adding icons - using generic directory
-		ImageIcon w = new ImageIcon("../Chapter10/src/Western HS.png"); //need to include .. at start
-		ImageIcon c = new ImageIcon("../Chapter10/src/Crescent HS.png");
+		ImageIcon w = new ImageIcon("../Chapter10/src/Skillbuilder/Western HS.png"); //need to include .. at start
+		ImageIcon c = new ImageIcon("../Chapter10/src/Skillbuilder/Crescent HS.png");
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 610, 498);

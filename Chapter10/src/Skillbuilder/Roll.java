@@ -1,3 +1,4 @@
+package Skillbuilder;
 import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
@@ -60,79 +61,24 @@ public class Roll {
 		dicePic2.setBounds(224, 31, 123, 122);
 		panel.add(dicePic2);
 		
-		ImageIcon d1 = new ImageIcon("../Chapter10/src/dice1.png");
-		ImageIcon d2 = new ImageIcon("../Chapter10/src/dice2.png");
-		ImageIcon d3 = new ImageIcon("../Chapter10/src/dice3.png");
-		ImageIcon d4 = new ImageIcon("../Chapter10/src/dice4.png");
-		ImageIcon d5 = new ImageIcon("../Chapter10/src/dice5.png");
-		ImageIcon d6 = new ImageIcon("../Chapter10/src/dice6.png");
+		ImageIcon d1 = new ImageIcon("../Chapter10/src/Skillbuilder/dice1.png");
+		ImageIcon d2 = new ImageIcon("../Chapter10/src/Skillbuilder/dice2.png");
+		ImageIcon d3 = new ImageIcon("../Chapter10/src/Skillbuilder/dice3.png");
+		ImageIcon d4 = new ImageIcon("../Chapter10/src/Skillbuilder/dice4.png");
+		ImageIcon d5 = new ImageIcon("../Chapter10/src/Skillbuilder/dice5.png");
+		ImageIcon d6 = new ImageIcon("../Chapter10/src/Skillbuilder/dice6.png");
 		
 		
 		JButton sub = new JButton("Roll Dice");
 		sub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				Random r = new Random();
-				int ran1 = r.nextInt(1,7);
-				int counter = 0;
+				int ran1 = r.nextInt(0,6);
+				int ran2 = r.nextInt(0,6);	
+				ImageIcon[] dieList = {d1, d2, d3, d4, d5, d6};
 				
-				while (counter != 2)
-				{
-					if (ran1 == 1) {
-						if (counter == 0) {
-							dicePic1.setIcon(d1);
-						}
-						else {
-							dicePic2.setIcon(d1);
-						}
-					}
-					else if (ran1 == 2) {
-						if (counter == 0) {
-							dicePic1.setIcon(d2);
-						}
-						else {
-							dicePic2.setIcon(d2);
-						}
-					}
-					else if (ran1 == 3) {
-						if (counter == 0) {
-							dicePic1.setIcon(d3);
-						}
-						else {
-							dicePic2.setIcon(d3);
-						}
-					}
-					else if (ran1 == 4) {
-						if (counter == 0) {
-							dicePic1.setIcon(d4);
-						}
-						else {
-							dicePic2.setIcon(d4);
-						}
-					}
-					else if (ran1 == 5) {
-						if (counter == 0) {
-							dicePic1.setIcon(d5);
-						}
-						else {
-							dicePic2.setIcon(d5);
-						}
-					}
-					else {
-						if (counter == 0) {
-							dicePic1.setIcon(d6);
-						}
-						else {
-							dicePic2.setIcon(d6);
-						}
-					}
-					
-					ran1 = r.nextInt(1,7);
-					counter++;
-				}
-				
-				
-				
+				dicePic1.setIcon(dieList[ran1]);
+				dicePic2.setIcon(dieList[ran2]);
 			}
 		});
 		sub.setBackground(new Color(240, 240, 255));
