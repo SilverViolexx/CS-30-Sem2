@@ -49,24 +49,29 @@ public class BreakAPlate {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 373);
+		frame.setBounds(100, 100, 450, 383);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		//container to organize GUI components
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.window);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
+		//Display area for plate images
 		JLabel plateDis = new JLabel("");
 		plateDis.setBounds(37, 34, 368, 114);
 		panel.add(plateDis);
 		
+		//Display area for reward images and text
 		JLabel reward = new JLabel("");
+		reward.setHorizontalAlignment(SwingConstants.CENTER);
 		reward.setForeground(new Color(0, 0, 128));
 		reward.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
-		reward.setBounds(167, 225, 107, 98);
+		reward.setBounds(99, 209, 244, 124);
 		panel.add(reward);
 		
+		//Initialize images
 		ImageIcon ogPlate = new ImageIcon ("../Chapter10/src/Mastery/plate.png");
 		ImageIcon plate2 = new ImageIcon ("../Chapter10/src/Mastery/2 Broken Plates.png");
 		ImageIcon plate3 = new ImageIcon ("../Chapter10/src/Mastery/3 Broken Plates.png");
@@ -74,57 +79,52 @@ public class BreakAPlate {
 		ImageIcon plush = new ImageIcon ("../Chapter10/src/Mastery/tiger.png");
 		ImageIcon sticker = new ImageIcon ("../Chapter10/src/Mastery/sticker.png");
 		
-		JLabel prizePrompt = new JLabel("");
-		prizePrompt.setHorizontalAlignment(SwingConstants.CENTER);
-		prizePrompt.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
-		prizePrompt.setForeground(new Color(0, 0, 64));
-		prizePrompt.setBounds(109, 204, 213, 23);
-		panel.add(prizePrompt);
-		
+		//Set image in display area for plates
 		plateDis.setIcon(ogPlate);
+		
+		//Set image in display area for reward and position text
 		reward.setIcon(placeHolder);
+		reward.setHorizontalTextPosition(JLabel.CENTER);
+		reward.setVerticalTextPosition(JLabel.TOP);
 		
-		
+		//Start button
 		JButton startGame = new JButton("Start");
-		startGame.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Random r = new Random();
-				int ran1 = r.nextInt(0,2);
-				int ran2 = r.nextInt(0,2);	
-				int ran3 = r.nextInt(0,2);	
-				int total = ran1 + ran2 + ran3;
-				startGame.setText("Play Again");
-			
-				if (total == 3) {
-					plateDis.setIcon(plate3);
-					reward.setIcon(plush);
-					prizePrompt.setText("You win a prize!");
-				}
-				else if (total == 2) {
-					plateDis.setIcon(plate2);
-					reward.setIcon(sticker);
-					prizePrompt.setText("You win a prize!");
-				}
-				else {
-					plateDis.setIcon(ogPlate);
-					prizePrompt.setText("You missed, nice try!");
-					reward.setIcon(placeHolder);
-				}
-				
-				
-				
-			}
-		});
 		startGame.setBackground(SystemColor.inactiveCaptionBorder);
 		startGame.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
 		startGame.setForeground(new Color(0, 0, 128));
 		startGame.setBounds(152, 167, 132, 34);
 		panel.add(startGame);
 		
-		
-		
-		
-		
-		
+		//Waits for start button to be clicked
+		startGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Picks between 1 and 0 three times and adds it together
+				Random r = new Random();
+				int ran1 = r.nextInt(2);
+				int ran2 = r.nextInt(2);	
+				int ran3 = r.nextInt(2);	
+				int total = ran1 + ran2 + ran3;
+				startGame.setText("Play Again");
+			
+				//Displays prize and/or text based on the sum
+				if (total == 3) {
+					plateDis.setIcon(plate3);
+					reward.setIcon(plush);
+					reward.setText("You win a prize!");
+				}
+				else if (total == 2) {
+					plateDis.setIcon(plate2);
+					reward.setIcon(sticker);
+					reward.setText("You win a prize!");
+				}
+				else {
+					plateDis.setIcon(ogPlate);
+					reward.setText("You missed, nice try!");
+					reward.setIcon(placeHolder);
+				}
+				
+			}
+		});
+	
 	}
 }
