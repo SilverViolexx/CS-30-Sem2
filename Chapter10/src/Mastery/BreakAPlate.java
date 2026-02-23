@@ -71,6 +71,14 @@ public class BreakAPlate {
 		reward.setBounds(99, 209, 244, 124);
 		panel.add(reward);
 		
+		//Start button
+		JButton startGame = new JButton("Start");
+		startGame.setBackground(SystemColor.inactiveCaptionBorder);
+		startGame.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
+		startGame.setForeground(new Color(0, 0, 128));
+		startGame.setBounds(152, 167, 132, 34);
+		panel.add(startGame);
+		
 		//Initialize images
 		ImageIcon ogPlate = new ImageIcon ("../Chapter10/src/Mastery/plate.png");
 		ImageIcon plate2 = new ImageIcon ("../Chapter10/src/Mastery/2 Broken Plates.png");
@@ -86,14 +94,6 @@ public class BreakAPlate {
 		reward.setIcon(placeHolder);
 		reward.setHorizontalTextPosition(JLabel.CENTER);
 		reward.setVerticalTextPosition(JLabel.TOP);
-		
-		//Start button
-		JButton startGame = new JButton("Start");
-		startGame.setBackground(SystemColor.inactiveCaptionBorder);
-		startGame.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
-		startGame.setForeground(new Color(0, 0, 128));
-		startGame.setBounds(152, 167, 132, 34);
-		panel.add(startGame);
 		
 		//Waits for start button to be clicked
 		startGame.addActionListener(new ActionListener() {
@@ -122,7 +122,7 @@ public class BreakAPlate {
 					reward.setText("You missed, nice try!");
 					reward.setIcon(placeHolder);
 				}
-				
+
 			}
 		});
 	
