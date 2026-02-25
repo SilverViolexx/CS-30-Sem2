@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -114,14 +115,14 @@ public class TicTacToe {
 		bR.setBounds(256, 223, 78, 78);
 		panel.add(bR);
 		
-		topRow = int[] ;
-		int[] centerRow = {};
-		int[] botRow = {};
-		int[] topCol = {};
-		int[] centerCol = {};
-		int[] botCol = {};
-		int[] leftDiag = {};
-		int[] rightDiag = {};
+		ArrayList<Integer> topRow = new ArrayList<Integer>();
+		ArrayList<Integer> centerRow = new ArrayList<Integer>();
+		ArrayList<Integer> botRow = new ArrayList<Integer>();
+		ArrayList<Integer> topCol = new ArrayList<Integer>();
+		ArrayList<Integer> centerCol = new ArrayList<Integer>();
+		ArrayList<Integer> botCol = new ArrayList<Integer>();
+		ArrayList<Integer> leftDiag = new ArrayList<Integer>();
+		ArrayList<Integer> rightDiag = new ArrayList<Integer>();
 		
 		
 		
@@ -138,20 +139,20 @@ public class TicTacToe {
 				whoGoes.setText("It is PLayer 1's turn!");
 				tL.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						tL.setText(player[i]);
-						topRow.add(1);
+						tL.setText(player[i % 2]);
+						topRow.add(0, 1);
 					}
 				});
 				tC.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						tC.setText(player[i]);
-						topRow[1] = 1;
+						tC.setText(player[i % 2]);
+						topRow.add(1, 1);
 					}
 				});
 				tR.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						tR.setText(player[i]);
-						topRow[3] = 1;
+						tR.setText(player[i % 2]);
+						topRow.add(3, 1);
 					}
 				});
 				tR.addActionListener(new ActionListener() {
@@ -170,20 +171,20 @@ public class TicTacToe {
 				whoGoes.setText("It is PLayer 2's turn!");
 				tL.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						tL.setText(player[i]);
-						topRow[0] = 2;
+						tL.setText(player[i % 2]);
+						topRow.add(0, 2);
 					}
 				});
 				tC.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						tC.setText(player[i]);
-						topRow[1] = 2;
+						tC.setText(player[i % 2]);
+						topRow.add(1, 2);
 					}
 				});
 				tR.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						tR.setText(player[i]);
-						topRow[3] = 2;
+						tR.setText(player[i % 2]);
+						topRow.add(2, 2);
 					}
 				});
 				tR.addActionListener(new ActionListener() {
@@ -193,11 +194,13 @@ public class TicTacToe {
 				
 				continue;
 				
-				
+			
 				
 			}
 		 
-			if ()
+			//int sum = 
+			
+			break;
 		
 		
 		
