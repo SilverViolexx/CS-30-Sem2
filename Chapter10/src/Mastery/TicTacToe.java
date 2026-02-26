@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TicTacToe {
 
@@ -70,9 +72,11 @@ public class TicTacToe {
 		String player2 = "O";
 		int counter = 0;
 		
+		
+		
 		for (int rows = 0; rows < 3; rows ++) {
 			for (int cols = 0; cols < 3; cols ++) {
-				
+					
 				
 				JButton spot = new JButton("");
 				spot.setFont(new Font("Calibri", Font.BOLD, 20));
@@ -81,9 +85,26 @@ public class TicTacToe {
 				
 				grid[rows][cols] = spot;
 				tttPanel.add(spot);
+			
+				spot.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if (spot.getText().equals("")) {
+							if (counter % 2 == 0) {
+								spot.setText("X");
+								
+							}
+							else {
+								spot.setText("O");
+							}
+						}
+						
+						
+					}
+				});
+						
 				
-				
-				
+						
+						
 			}
 		}
 		
