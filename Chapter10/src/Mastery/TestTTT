@@ -1,0 +1,104 @@
+package Mastery;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+
+public class TTT {
+
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Testing window = new Testing();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public TTT() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
+		
+		JLabel turn = new JLabel("");
+		turn.setHorizontalAlignment(SwingConstants.CENTER);
+		turn.setForeground(new Color(0, 0, 128));
+		turn.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
+		turn.setBounds(99, 209, 244, 124);
+		panel.add(turn);
+
+    //Array keeps track of buttons
+    JButton[][] grid = new JButton[3][3];
+    String player1 = "X";
+    String player2 = "O";
+    int counter = 0;
+    
+
+    for (int rows = 0; rows < 3; rows ++) {
+      for (int col = 0; col < 3; col ++) {
+        JButton spot = new Jbutton();
+        spot.setBackground(SystemColor.inactiveCaptionBorder);
+		    spot.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
+		    spot.setForeground(new Color(0, 0, 128));
+		    spot.setBounds(152, 167, 132, 34);
+		    panel.add(grid);
+
+        grid[rows][col] = spot;
+      
+        if (counter % 2 == 0) {
+            String whoGoes = player1;
+        }
+        else {
+          whoGoes = player2;
+        }
+        turn.setText(whoGoes + "'s turn");
+
+        startGame.addActionListener(new ActionListener() {
+			    public void actionPerformed(ActionEvent e) {
+
+          
+    
+          if (spot.getText() == "" {
+            spot.setText(whoGoes);
+          }
+
+          counter ++;
+          }  
+
+
+
+
+
+          
+
+        }
+
+    }
+	}
+}
