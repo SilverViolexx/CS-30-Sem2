@@ -1,0 +1,95 @@
+package Mastery;
+
+import java.awt.EventQueue;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+
+public class TicTacToe {
+
+	private JFrame frame;
+	private JLabel turn;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					TicTacToe window = new TicTacToe();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public TicTacToe() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 370);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
+		
+		turn = new JLabel("");
+		turn.setFont(new Font("Calibri", Font.BOLD, 15));
+		turn.setForeground(new Color(0, 0, 128));
+		
+		JPanel tttPanel = new JPanel();
+		tttPanel.setBounds(75, 70, 284, 239);
+		panel.add(tttPanel);
+		tttPanel.setLayout(new GridLayout(3,3));
+		//tttPanel.add(turn);
+		
+		
+		
+		JButton[][] grid = new JButton[3][3];
+		String player1 = "X";
+		String player2 = "O";
+		int counter = 0;
+		
+		for (int rows = 0; rows < 3; rows ++) {
+			for (int cols = 0; cols < 3; cols ++) {
+				
+				
+				JButton spot = new JButton("");
+				spot.setFont(new Font("Calibri", Font.BOLD, 20));
+				spot.setForeground(new Color(0, 0, 128));
+				spot.setBounds(145, 115, 99, 72);
+				
+				grid[rows][cols] = spot;
+				tttPanel.add(spot);
+				
+				
+				
+			}
+		}
+		
+		
+		
+		
+		
+	}
+}
