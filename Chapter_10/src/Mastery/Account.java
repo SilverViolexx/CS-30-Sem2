@@ -71,10 +71,12 @@ public class Account
 	 * post: The balance has been decreased by the amount withdrawn.
 	 */
 	public void withdrawal(double amt) {
+		
 	 	if (amt <= balance) {
 	 		balance -= amt;
 	 	} else {
-	 		System.out.println("Not enough money in account.");
+	 		//System.out.println("Not enough money in account.");
+	 		
 	 	}
 	}
 	

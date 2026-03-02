@@ -245,8 +245,6 @@ public class LocalBank {
 		fNameDis.setVisible(false);
 		lNameDis.setVisible(false);
 		balanceDis.setVisible(false);
-		//resultDis.setVisible(false);
-		//submit.setVisible(false);
 		accNumDis.setVisible(false);
 		wAmtDis.setVisible(false);
 		dAmtDis.setVisible(false);
