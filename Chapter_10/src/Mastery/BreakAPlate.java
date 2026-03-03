@@ -52,7 +52,7 @@ public class BreakAPlate {
 		frame.setBounds(100, 100, 450, 383);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		//container to organize GUI components
+		//Container to organize GUI components
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.window);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);

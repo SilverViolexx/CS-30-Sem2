@@ -20,6 +20,7 @@ import java.awt.SystemColor;
 
 public class LocalBank {
 
+	//Initialize variables that show up in other methods
 	private JFrame frame;
 	private JTextField fNameDis, lNameDis, balanceDis, accNumDis, wAmtDis, dAmtDis;
 	private JButton submit;
@@ -58,32 +59,38 @@ public class LocalBank {
 		frame.setBounds(100, 100, 450, 341);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		//Container to organize GUI components
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
+		//Display area for output
 		resultDis = new JLabel("");
 		resultDis.setForeground(new Color(0, 0, 128));
 		resultDis.setFont(new Font("Calibri", Font.BOLD, 15));
 		resultDis.setBounds(27, 183, 399, 66);
 		panel.add(resultDis);
 		
+		//Button for user input
 		submit = new JButton("Submit");
 		submit.setFont(new Font("Calibri", Font.BOLD, 20));
 		submit.setForeground(new Color(0, 0, 128));
 		submit.setVisible(false);
+		submit.setBounds(27, 259, 133, 28);
+		panel.add(submit);		
 		
+		//New object
 		Bank action = new Bank();
 		
-		submit.setBounds(27, 259, 133, 28);
-		panel.add(submit);
+		//Drop list of possible actions
 		JComboBox prompt = new JComboBox();
 		prompt.setBackground(SystemColor.inactiveCaptionBorder);
-		
 		prompt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Method that resets text boxes + its visibility
 				hideBoxes();
 				
+				//Method that overrides text of the boxes
 				override(fNameDis, "First Name:");
 				override(lNameDis, "Last Name:");
 				override(balanceDis, "Starting Balance:");
@@ -91,85 +98,105 @@ public class LocalBank {
 				override(wAmtDis, "Withdraw Amount:");
 				override(dAmtDis, "Deposit Amount:");
 				
-				
+				//When "Add An Account" is selected
 				if (prompt.getSelectedItem().equals("Add An Account")) {
+					//Displays boxes needed
 					fNameDis.setVisible(true);
 					lNameDis.setVisible(true);
 					balanceDis.setVisible(true);
 					resultDis.setVisible(true);
 					submit.setVisible(true);
 					
-				
+					//Waits for user to click button
 					submit.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-						fName = fNameDis.getText();
-						lName = lNameDis.getText();
-						balance = Double.parseDouble(balanceDis.getText());
-						accID = action.addAccount(fName, lName, balance);
-						resultDis.setText("Account created. Account ID is: " + accID);
+							//Set values for variables using user input
+							fName = fNameDis.getText();
+							lName = lNameDis.getText();
+							balance = Double.parseDouble(balanceDis.getText());
+							//Uses method to create an account + displays information
+							accID = action.addAccount(fName, lName, balance);
+							resultDis.setText("Account created. Account ID is: " + accID);
 						}
 					});
 				}
+				//When "Remove An Account" is selected
 				else if (prompt.getSelectedItem().equals("Remove An Account")) {
+					//Displays boxes needed
 					accNumDis.setVisible(true);
 					resultDis.setVisible(true);
 					submit.setVisible(true);
 					
+					//Waits for user to click button
 					submit.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-						accID = accNumDis.getText();
-		
-						result = action.deleteAccount(accID);
-						resultDis.setText(result);
+							//Set values for variables using user input
+							accID = accNumDis.getText();
+							
+							//Uses method to delete an account + displays information
+							result = action.deleteAccount(accID);
+							resultDis.setText(result);
 						}
 					});
 					
 				}
 				else if (prompt.getSelectedItem().equals("Withdraw")) {
+					//Displays boxes needed
 					accNumDis.setVisible(true);
 					wAmtDis.setVisible(true);
 					resultDis.setVisible(true);
 					submit.setVisible(true);
 					
+					//Waits for user to click button
 					submit.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-						accID = accNumDis.getText();
-						balance = Double.parseDouble(wAmtDis.getText());
+							//Set values for variables using user input
+							accID = accNumDis.getText();
+							balance = Double.parseDouble(wAmtDis.getText());
 		
-						result = action.transaction(2, accID, balance);
-						resultDis.setText(result);
+							//Uses method to withdraw money + displays information
+							result = action.transaction(2, accID, balance);
+							resultDis.setText(result);
 						}
 					});
 					
 				}
 				else if (prompt.getSelectedItem().equals("Deposit")) {
+					//Displays boxes needed
 					accNumDis.setVisible(true);
 					dAmtDis.setVisible(true);
 					resultDis.setVisible(true);
 					submit.setVisible(true);
 					
+					//Waits for user to click button
 					submit.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-						accID = accNumDis.getText();
-						balance = Double.parseDouble(dAmtDis.getText());
+							//Set values for variables using user input
+							accID = accNumDis.getText();
+							balance = Double.parseDouble(dAmtDis.getText());
 		
-						result = action.transaction(1, accID, balance);
-						resultDis.setText(result);
+							//Uses method to deposit money + displays information
+							result = action.transaction(1, accID, balance);
+							resultDis.setText(result);
 						}
 					});
 					
 				}
 				else if (prompt.getSelectedItem().equals("Check Balance")) {
+					//Displays boxes needed
 					accNumDis.setVisible(true);
 					resultDis.setVisible(true);
 					submit.setVisible(true);
 					
+					//Waits for user to click button
 					submit.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-						accID = accNumDis.getText();
+							//Set values for variables using user input
+							accID = accNumDis.getText();
 		
-						result = action.checkBalance(accID);
-						resultDis.setText(result);
+							//Uses method to check balance + displays information
+							result = action.checkBalance(accID);
+							resultDis.setText(result);
 						}
 					});
 					
@@ -179,10 +206,10 @@ public class LocalBank {
 		prompt.setFont(new Font("Calibri", Font.BOLD, 20));
 		prompt.setForeground(new Color(0, 0, 128));
 		prompt.setModel(new DefaultComboBoxModel(new String[] {"Please Choose An Option:", "Add An Account", "Remove An Account", "Withdraw", "Deposit", "Check Balance"}));
-		prompt.setBounds(27, 27, 250, 28);
+		prompt.setBounds(27, 27, 255, 28);
 		panel.add(prompt);
 		
-		
+		//Area for user to input information
 		fNameDis = new JTextField();
 		fNameDis.setText("First Name:");
 		fNameDis.setForeground(new Color(0, 0, 128));
@@ -217,10 +244,7 @@ public class LocalBank {
 		accNumDis.setColumns(10);
 		accNumDis.setBounds(27, 75, 255, 28);
 		panel.add(accNumDis);
-		accNumDis.setVisible(false);
-		
-		
-		
+		accNumDis.setVisible(false);	
 		
 		wAmtDis = new JTextField();
 		wAmtDis.setText("Withdraw Amount:");
@@ -241,6 +265,7 @@ public class LocalBank {
 		dAmtDis.setVisible(false);
 		
 	}
+	//Method that resets text boxes + its visibility
 	public void hideBoxes() {
 		fNameDis.setVisible(false);
 		lNameDis.setVisible(false);
@@ -257,11 +282,12 @@ public class LocalBank {
 		wAmtDis.setText("Withdraw Amount:");
 		dAmtDis.setText("Deposit Amount:");
 		
+		//Loop that ensures that only the most recent ActionListener responds
 		for (ActionListener al : submit.getActionListeners()) {
 			submit.removeActionListener(al);
 		}
 	}
-	
+	//Method that makes it so the prompt disappears when the user types
 	public void override(JTextField area, String ogPrompt) {
 		area.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {

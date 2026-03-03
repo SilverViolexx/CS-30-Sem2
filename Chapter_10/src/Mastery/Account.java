@@ -107,6 +107,7 @@ public class Account
 		String accountString;
 		NumberFormat money = NumberFormat.getCurrencyInstance();
 
+		//Edited format to display nicer in GUI
 		accountString = "<html>Account ID: " + acctID + "<br>" +//changed for Chapter 11 Exer 1
 		 "Account Name: " + cust.toString() + "<br>" +
 		 "Current balance is " + money.format(balance);
