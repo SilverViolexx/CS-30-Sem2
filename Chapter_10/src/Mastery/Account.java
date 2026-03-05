@@ -69,13 +69,14 @@ public class Account
 	 * A withdrawal is made from the account if there is enough money.
 	 * pre: none
 	 * post: The balance has been decreased by the amount withdrawn.
+	 * @return 
 	 */
 	public void withdrawal(double amt) {
 		
 	 	if (amt <= balance) {
 	 		balance -= amt;
 	 	} else {
-	 		//System.out.println("Not enough money in account.");
+	 		System.out.println("Not enough money in account.");
 	 		
 	 	}
 	}

@@ -1,3 +1,14 @@
+/*
+Program: LocalBank.java          Last Date of this Revision: March 3, 2026
+
+Purpose: Create LocalBankGUI application that implements a GUI for the Local Bank case study.
+
+Author: Amanda Ly
+School: CHHS
+Course: Computer Programming 30
+ 
+*/
+
 package Mastery;
 
 import java.awt.EventQueue;
@@ -61,6 +72,7 @@ public class LocalBank {
 		
 		//Container to organize GUI components
 		JPanel panel = new JPanel();
+		panel.setBackground(SystemColor.textHighlightText);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		

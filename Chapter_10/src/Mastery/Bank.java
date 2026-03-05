@@ -70,7 +70,7 @@ public class Bank
 	 			acct.deposit(amt);
 	 			accounts.set(acctIndex, acct);			//replace object with updated object
 	 			return(acct.toString());
-	 		} else if (transCode == 2) {
+	 		} else if (transCode == 2) {		
 	 			acct.withdrawal(amt);
 	 			accounts.set(acctIndex, acct);			//replace object with updated object
 	 			return(acct.toString());

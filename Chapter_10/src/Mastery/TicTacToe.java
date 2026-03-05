@@ -1,3 +1,14 @@
+/*
+Program: TicTacToe.java          Last Date of this Revision: March 2, 2026
+
+Purpose: Create a TicTacToe application that allows 2 players to play a computerized tic-tac-toe game.
+
+Author: Amanda Ly
+School: CHHS
+Course: Computer Programming 30
+ 
+*/
+
 package Mastery;
 
 import java.awt.EventQueue;

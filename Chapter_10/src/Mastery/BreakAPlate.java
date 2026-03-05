@@ -1,3 +1,13 @@
+/*
+Program: BreakAPlate.java          Last Date of this Revision: February 24, 2026
+
+Purpose: Create BreakAPlate application that simulates a game booth at a carnival with breaking plates.
+
+Author: Amanda Ly
+School: CHHS
+Course: Computer Programming 30
+ 
+*/
 package Mastery;
 
 import java.awt.EventQueue;
