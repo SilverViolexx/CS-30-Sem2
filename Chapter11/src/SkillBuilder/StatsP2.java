@@ -14,6 +14,7 @@ public class StatsP2 {
 
 	public static void main (String[] args) {
 		
+		//Initialize
 		File dataF;
 		FileReader reads;
 		BufferedReader readFile;
@@ -30,12 +31,14 @@ public class StatsP2 {
 		double totalScore = 0;
 		String fileN, studentN, score;
 		
+		//Prompt user
 		System.out.print("Enter File Name: ");
-		fileN = input.nextLine();		
+		fileN = input.next();		
 
 		System.out.print("Number Of Students: ");
 		numStudent = input.nextInt();
 			
+		//Tests code for errors
 		try {
 			dataF = new File(fileN);
 			writes = new FileWriter(dataF);
@@ -43,12 +46,14 @@ public class StatsP2 {
 			
 			for (int i = 0; i < numStudent; i ++) {
 				System.out.print("Student Name: ");
-				studentN = input.nextLine();
+				studentN = input.next();
 				
 				System.out.print("Grade: ");
-				score = input.nextLine();
+				score = input.next();
 				
+				//Writes raw data (characters, Strings, or bytes) w/o adding line break
 				writeF.write(studentN);
+				//Inserts line separator
 				writeF.newLine();
 				writeF.write(score);
 				writeF.newLine();
@@ -65,7 +70,7 @@ public class StatsP2 {
 			System.err.println("IOException: " + e.getMessage());
 		}
 		
-		//Read data from file
+		//Read data from file while checking for errors
 		try {
 			dataF = new File(fileN);
 			reads = new FileReader(dataF);

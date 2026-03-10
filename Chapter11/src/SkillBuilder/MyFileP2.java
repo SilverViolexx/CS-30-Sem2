@@ -20,10 +20,13 @@ public class MyFileP2 {
 			System.out.println("File Arlready Exists.");
 		}
 		else {
+			//Exception handler that performs action when exception occurs so program doesn't crash
+			//Defines block of code to be tested for errors while its being executed
 			try {
 				textFile.createNewFile(); //Creates file and returns true
 				System.out.println("File Has Been Created"); //Need to refresh project to see it
 			}
+			//Block of code that will execute when error occurs
 			catch (IOException e){
 				System.out.println("File COuldn't Be Created");
 				System.err.println("IOException: " + e.getMessage());

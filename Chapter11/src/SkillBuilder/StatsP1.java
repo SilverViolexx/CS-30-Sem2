@@ -12,6 +12,7 @@ public class StatsP1 {
 	public static void main (String[] args0) {
 		//Initialize
 		File textFile = new File("C:\\Users\\38207518\\git\\CS-30-Sem2\\Chapter11\\src\\SkillBuilder\\test1.dat");
+		//Use both FileReader + BufferedReader
 		FileReader reads;
 		BufferedReader readFile;
 		
@@ -24,7 +25,9 @@ public class StatsP1 {
 		
 		NumberFormat percent = NumberFormat.getPercentInstance();
 		
+		//Code that will be tested for errors
 		try {
+			//Pass FileReader (for simple/small file writing) to BufferedReader
 			reads = new FileReader(textFile);
 			readFile = new BufferedReader(reads);
 			
@@ -40,6 +43,7 @@ public class StatsP1 {
 				scoreValue = Double.parseDouble(score);
 				totalScore += scoreValue;
 				
+				//Replaces lowest/highest score
 				if (scoreValue < lowScore) {
 					lowScore = scoreValue;
 				}
@@ -59,6 +63,7 @@ public class StatsP1 {
 			reads.close();
 			
 		}
+		//Executes code if error occurs
 		catch (FileNotFoundException e){
 			System.out.println("File doesn't exist.");
 			System.err.println("FileNotFOundException: " + e.getMessage());
