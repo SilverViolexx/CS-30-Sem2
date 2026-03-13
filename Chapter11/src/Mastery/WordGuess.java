@@ -11,9 +11,6 @@ Course: Computer Programming 30
  
 */
 
-
-
-
 package Mastery;
 
 import java.io.BufferedReader;
@@ -49,8 +46,7 @@ public class WordGuess {
 		String wordSoFar = "", updatedWord = "";
 		String letterGuess, wordGuess = "";
 		int numGuesses = 0;
-		//String word;
-		//char[] letters;
+		int tries = 15;
 
 		/* select secret word */
 		try {
@@ -62,7 +58,6 @@ public class WordGuess {
                 while ((readF.readLine()) != null) {
                 	numWords ++;
                 }               		
-                System.out.println(numWords);	
                 
                 //Need to close and reopen it to read file again
                 readF.close();
@@ -73,7 +68,7 @@ public class WordGuess {
                 
                 //update the word to guess to the random object and number of words read plus one
                 wordToGuess = ranNum.nextInt(1, numWords + 1);
-                System.out.println(wordToGuess);
+ 
                 for (int i = 0; i < wordToGuess; i++) {
                 	
                 	secretWord = readF.readLine();
@@ -83,10 +78,7 @@ public class WordGuess {
                 
                 //iterate through the word to guess slots
                 /*
-                char[] letters = new char[wordGuess.length()];
-                for (int i = 0; i < wordGuess.length(); i ++) {
-                	letters[i] = wordGuess.charAt(i);
-                }
+               
                 */
                         //update the secret work from the lines read from the file
                
@@ -108,7 +100,7 @@ public class WordGuess {
 
 
 		/* begin the game */
-		System.out.println("WordGuess game.");
+		System.out.println("WordGuess game." + "\n");
 
         //iterate through the secret word, and update the word so far variable to represent using dashes 
         //the length of the secret word
@@ -124,37 +116,46 @@ public class WordGuess {
 
 		do {
 			//?? prompt for a letter
-			System.out.print("Guess A Letter (" + FLAG + " To Guess The Entire Word): ");
+			System.out.print(tries + " Guesses Remaining." + "\n"
+					+ "Guess A Letter (" + FLAG + " To Guess The Entire Word): ");
 			letterGuess = input.next();
 			letterGuess = letterGuess.toUpperCase();
 
 			/* increment number of guesses */
 			numGuesses += 1;
-			System.out.println(numGuesses);
+			tries -= 1;
 			//?
 
 			/* player correctly guessed a letter--extract string in wordSoFar up to the letter
 			 * guessed and then append guessed letter to that string. Next, extract rest of
 			 * wordSoFar and append after the guessed letter
 			 */
+			
+			int index = secretWord.indexOf(letterGuess);
+			
 			//indexOf - returns index where the first occurrence of "letterGuess" in the String
 			//Runs code if letter guessed is in the word
-			if (secretWord.indexOf(letterGuess) >= 0) {
-				System.out.println("HELLO");
+			while (index >= 0) {
+
 				//Extracts characters from the start of the word to just before the correctly guessed letter - replaces dash with letter guessed
-				updatedWord = wordSoFar.substring(0, secretWord.indexOf(letterGuess));
+				
+				updatedWord = wordSoFar.substring(0, index);
 				updatedWord += letterGuess;
-				updatedWord += wordSoFar.substring(secretWord.indexOf(letterGuess) + 1, wordSoFar.length());
+				updatedWord += wordSoFar.substring(index + 1, wordSoFar.length());
 				wordSoFar = updatedWord;
+				
+				//Starts looking for letter after first instance of letter
+				index = secretWord.indexOf(letterGuess, index + 1);
+				
 			}
 
 
 
 			/* display guessed letter instead of dash */
-			System.out.println(wordSoFar);
+			System.out.println(wordSoFar + "\n");
 
 
-		} while (!letterGuess.equals(FLAG) && !wordSoFar.equals(secretWord));
+		} while (!letterGuess.equals(FLAG) && !wordSoFar.equals(secretWord) && tries != 0); //Do-while checks condition at end
 
 
 
@@ -168,12 +169,15 @@ public class WordGuess {
 		if (wordGuess.equals(secretWord) || wordSoFar.equals(secretWord)) {
 			System.out.println("You Won!");
 		}
+		if (tries == 0) {
+			System.out.println("Sorry, No More Guesses. You Lose.");
+		}
 		else {
 			System.out.println("Sorry. You Lose.");
 		}
 		System.out.println("The Secret Word Is: " + secretWord);
 		System.out.println("You Made " + numGuesses + " guesses.");
-        //??
+        
 		
 		
 		
