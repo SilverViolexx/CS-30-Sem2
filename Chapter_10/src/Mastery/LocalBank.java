@@ -85,6 +85,7 @@ public class LocalBank {
 		
 		//Button for user input
 		submit = new JButton("Submit");
+		submit.setBackground(Color.WHITE);
 		submit.setFont(new Font("Calibri", Font.BOLD, 20));
 		submit.setForeground(new Color(0, 0, 128));
 		submit.setVisible(false);

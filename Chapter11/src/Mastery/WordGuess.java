@@ -1,5 +1,5 @@
 /*
-Program: WordGuess.java          Last Date of this Revision: March 13, 2026
+Program: WordGuess.java          Last Date of this Revision: March 17, 2026
 
 Purpose: Create a WordGuessing Game application that uses a word from a file as the secret word. The file 
 should contain a list of words, with one word per line. The WordGuess application should determine 
@@ -57,6 +57,7 @@ public class WordGuess {
 				//Get the number of words in the file using readFile
                 while ((readF.readLine()) != null) {
                 	numWords ++;
+                	System.out.println(numWords);
                 }               		
                 
                 //Need to close and reopen it to read file again
@@ -166,22 +167,17 @@ public class WordGuess {
 			wordGuess = input.next();
 			wordGuess = wordGuess.toUpperCase();
 		}
-		if (wordGuess.equals(secretWord) || wordSoFar.equals(secretWord)) {
-			System.out.println("You Won!");
-		}
 		if (tries == 0) {
 			System.out.println("Sorry, No More Guesses. You Lose.");
+		}
+		if (wordGuess.equals(secretWord) || wordSoFar.equals(secretWord)) {
+			System.out.println("You Won!");
 		}
 		else {
 			System.out.println("Sorry. You Lose.");
 		}
 		System.out.println("The Secret Word Is: " + secretWord);
-		System.out.println("You Made " + numGuesses + " guesses.");
-        
-		
-		
-		
-		
+		System.out.println("You Made " + numGuesses + " guesses.");      
 		
 	}
 }
