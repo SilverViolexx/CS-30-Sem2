@@ -57,7 +57,6 @@ public class WordGuess {
 				//Get the number of words in the file using readFile
                 while ((readF.readLine()) != null) {
                 	numWords ++;
-                	System.out.println(numWords);
                 }               		
                 
                 //Need to close and reopen it to read file again
@@ -73,8 +72,7 @@ public class WordGuess {
                 for (int i = 0; i < wordToGuess; i++) {
                 	
                 	secretWord = readF.readLine();
-                	secretWord = secretWord.toUpperCase();
-                	System.out.println(secretWord);	
+                	secretWord = secretWord.toUpperCase();            
                 }
                 
                 //iterate through the word to guess slots
