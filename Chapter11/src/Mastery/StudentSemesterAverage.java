@@ -1,3 +1,15 @@
+/*
+Program: StudentSemesterAverage.java          Last Date of this Revision: March 30, 2026
+
+Purpose: Create a StudentSemesterAverage application that allows the user to input students' grades into a
+text file, view the file and clear any text in the file.
+
+Author: Amanda Ly
+School: CHHS
+Course: Computer Programming 30
+ 
+*/
+
 package Mastery;
 
 import java.awt.EventQueue;
@@ -23,15 +35,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.JTabbedPane;
-import javax.swing.JDesktopPane;
-import javax.swing.JToolBar;
-import javax.swing.JLayeredPane;
-import javax.swing.JInternalFrame;
-import javax.swing.border.BevelBorder;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class StudentSemesterAverage {
 
@@ -90,9 +97,10 @@ public class StudentSemesterAverage {
 		panel.setLayout(null);
 		
 		JTextArea prompt = new JTextArea();
+		prompt.setEditable(false);
 		prompt.setFont(new Font("Calibri", Font.BOLD, 15));
 		prompt.setText("Student Name:\r\nGrade Level:\r\nSemester Number:\r\nGrade 1:\r\nGrade 2:\r\nGrade 3:\r\nGrade 4:");
-		prompt.setBounds(74, 10, 176, 144);
+		prompt.setBounds(68, 10, 176, 144);
 		panel.add(prompt);
 		
 		enterN = new JTextField();
@@ -146,16 +154,15 @@ public class StudentSemesterAverage {
 		
 		JLabel avgDis = new JLabel("Average: ");
 		avgDis.setFont(new Font("Calibri", Font.BOLD, 15));
-		avgDis.setBounds(77, 152, 228, 20);
-		panel.add(avgDis);
+		avgDis.setBounds(69, 152, 228, 20);
+		panel.add(avgDis);	
 		
-		JButton saveFile = new JButton("Save To File");
-		
+		JButton saveFile = new JButton("Save To File");		
 		saveFile.setVerticalAlignment(SwingConstants.TOP);
 		saveFile.setBackground(SystemColor.inactiveCaptionBorder);
 		saveFile.setFont(new Font("Calibri", Font.BOLD, 15));
 		saveFile.setForeground(new Color(0, 0, 0));
-		saveFile.setBounds(86, 296, 115, 23);
+		saveFile.setBounds(83, 296, 115, 23);
 		panel.add(saveFile);
 		
 		JButton viewFile = new JButton("View File Contents");
@@ -163,7 +170,7 @@ public class StudentSemesterAverage {
 		viewFile.setForeground(Color.BLACK);
 		viewFile.setFont(new Font("Calibri", Font.BOLD, 15));
 		viewFile.setBackground(SystemColor.inactiveCaptionBorder);
-		viewFile.setBounds(206, 296, 155, 23);
+		viewFile.setBounds(202, 296, 155, 23);
 		panel.add(viewFile);
 		
 		scrollPane = new JScrollPane();
@@ -173,6 +180,8 @@ public class StudentSemesterAverage {
 		panel.add(scrollPane);
 		
 		displayInfo = new JTextArea();
+		displayInfo.setWrapStyleWord(true);
+		displayInfo.setEditable(false);
 		displayInfo.setLineWrap(true);
 		displayInfo.setBackground(SystemColor.inactiveCaptionBorder);
 		displayInfo.setFont(new Font("Calibri", Font.PLAIN, 15));
@@ -183,19 +192,28 @@ public class StudentSemesterAverage {
 		deleteFile.setForeground(Color.BLACK);
 		deleteFile.setFont(new Font("Calibri", Font.BOLD, 15));
 		deleteFile.setBackground(SystemColor.inactiveCaptionBorder);
-		deleteFile.setBounds(364, 296, 148, 23);
+		deleteFile.setBounds(363, 296, 148, 23);
 		panel.add(deleteFile);
 		
-		
-		
-		
-		
-		
+		//Resets display for information when user starts inputting data
+		enterN.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				if (enterN.getText() != "") {
+					displayInfo.setText("");
+				}
+			}
+		});
+
+		//Create file object
 		textFile = new File("C:\\Users\\38207518\\git\\CS-30-Sem2\\Chapter11\\src\\Mastery\\GradeBook.txt");
+		
+		//Shortens number to 2 decimal places
 		DecimalFormat df = new DecimalFormat("#0.00");
 		
+		//Waits for user to click button
 		saveFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Get data that user inputed
 				studentN = enterN.getText().toUpperCase();
 				level = enterGrade.getText();
 				sem = enterSem.getText();
@@ -204,19 +222,28 @@ public class StudentSemesterAverage {
 				grd3 = Double.parseDouble(enterG3.getText());
 				grd4 = Double.parseDouble(enterG4.getText());
 				
+				//Calculate and display average
 				avg = (grd1 + grd2 + grd3 + grd4) /4;
+				avgDis.setText("Average: " + avg);;
 				
-				try {					
+				//Tests code for errors
+				try {
+					//Create FileWriter and BufferedWriter object
 					writes = new FileWriter(textFile, true);
 					writeFile = new BufferedWriter(writes);
 					
-
+					//write data into file
 					writeFile.write("Student Name: " + studentN + ", Grade Level: " + level + ", Semester Number: " + sem + ", Grade 1: " + grd1 +
 							", Grade 2: " + grd2 + ", Grade 3: " + grd3 + ", Grade 4: " + grd4 + ", Average: " + df.format(avg) + "\n");
 					
+					//Close objects
 					writeFile.close();
 					writes.close();
-					displayInfo.setText("Data Written");
+					
+					//Display confirmation of action
+					displayInfo.setText("Graded Added!");
+					
+					//Reset boxes for user to input data
 					clearBox();
 				}
 				
@@ -232,23 +259,47 @@ public class StudentSemesterAverage {
 			}
 		});
 		
+		//Waits for user to click button
 		viewFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Tests code for errors
 				try {
+					//Create FileReader and BufferedReader object
 					reads = new FileReader(textFile);
 					readFile = new BufferedReader(reads);
+					
+					//Reset boxes for user to input data
 					clearBox();
 					
+					//Initialize variables
 					String eachLine, newLine = "";
 					
-					while ((eachLine = readFile.readLine()) != null) {
-						newLine = newLine + eachLine + "\n";
-						displayInfo.setText(newLine);
-					}	
+					//Displays that file is empty if first line of file is empty
+					if ((eachLine = readFile.readLine()) == null) {
+						displayInfo.setText("Grade Book Is Empty.");
+					}
+					//Close objects
+					readFile.close();
+					reads.close();
 					
+					//Reinitialize objects so that first line is read
+					reads = new FileReader(textFile);
+					readFile = new BufferedReader(reads);
+					
+					//Continues loop while line in file isn't empty
+					while ((eachLine = readFile.readLine()) != null) {
+						//Adds each line to a string
+						newLine = newLine + eachLine + "\n";	
+					}
+					
+					//Displays string
+					displayInfo.setText(newLine);
+					
+					//Close objects
 					readFile.close();
 					reads.close();
 				}
+				//Exception handling
 				catch (FileNotFoundException e1){
 			    	System.out.println("File doesn't exist.");
 					System.err.println("FileNotFOundException: " + e1.getMessage());
@@ -261,19 +312,27 @@ public class StudentSemesterAverage {
 			}
 		});
 		
+		//Waits for user to click button
 		deleteFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Tests code for errors
 				try {
+					//Create FileWriter and BufferedWriter object
+					//FileWriter doesn't include true - replaces any text in file
 					writes = new FileWriter(textFile);
-				writeFile = new BufferedWriter(writes);
+					writeFile = new BufferedWriter(writes);				
 				
+					//Replaces text in file with a blank
+					writeFile.write("");
+					
+					//Displays that file has been cleared
+					displayInfo.setText("Grade Book Cleared.");
 				
-				writeFile.write("");
-				
-				writeFile.close();
-				writes.close();
-				
+					//Close objects
+					writeFile.close();
+					writes.close();				
 				}
+				//Exception handling
 				catch (FileNotFoundException e1){
 			    	System.out.println("File doesn't exist.");
 					System.err.println("FileNotFOundException: " + e1.getMessage());
@@ -288,6 +347,7 @@ public class StudentSemesterAverage {
 		
 	}
 	
+	//Method that resets the boxes that the user inputs data in
 	public void clearBox() {
 		enterN.setText("");
 		enterGrade.setText("");

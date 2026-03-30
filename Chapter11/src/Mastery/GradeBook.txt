@@ -1,0 +1,4 @@
+Student Name: BOB, Grade Level: 11, Semester Number: 1, Grade 1: 59.0, Grade 2: 98.0, Grade 3: 76.0, Grade 4: 95.0, Average: 82.00
+Student Name: CAT, Grade Level: 10, Semester Number: 2, Grade 1: 89.0, Grade 2: 76.0, Grade 3: 89.0, Grade 4: 67.0, Average: 80.25
+Student Name: DOG, Grade Level: 10, Semester Number: 2, Grade 1: 89.0, Grade 2: 58.0, Grade 3: 65.0, Grade 4: 75.0, Average: 71.75
+Student Name: ELLE, Grade Level: 11, Semester Number: 2, Grade 1: 89.0, Grade 2: 76.0, Grade 3: 76.0, Grade 4: 94.0, Average: 83.75

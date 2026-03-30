@@ -50,43 +50,43 @@ public class WordGuess {
 
 		/* select secret word */
 		try {
-				//initialize the file reader object to name of the file object
-                reads = new FileReader(textFile);
-                //initialize the BufferedReader object to the name of the file reader as a parameter
-                readF = new BufferedReader(reads);
-				//Get the number of words in the file using readFile
-                while ((readF.readLine()) != null) {
-                	numWords ++;
-                }               		
+			//initialize the file reader object to name of the file object
+            reads = new FileReader(textFile);
+            //initialize the BufferedReader object to the name of the file reader as a parameter
+            readF = new BufferedReader(reads);
+            //Get the number of words in the file using readFile
+            while ((readF.readLine()) != null) {
+            	numWords ++;
+            }               		
                 
-                //Need to close and reopen it to read file again
-                readF.close();
-                reads.close();
+             //Need to close and reopen it to read file again
+             readF.close();
+             reads.close();
                 
-                reads = new FileReader(textFile);           
-                readF = new BufferedReader(reads);                
+             reads = new FileReader(textFile);           
+             readF = new BufferedReader(reads);                
                 
-                //update the word to guess to the random object and number of words read plus one
-                wordToGuess = ranNum.nextInt(1, numWords + 1);
+             //update the word to guess to the random object and number of words read plus one
+             wordToGuess = ranNum.nextInt(1, numWords + 1);
+                
  
-                for (int i = 0; i < wordToGuess; i++) {
+             //Goes through lines in file until it gets to the secret word
+             for (int i = 0; i < wordToGuess; i++) {
                 	
-                	secretWord = readF.readLine();
-                	secretWord = secretWord.toUpperCase();            
-                }
-                
-                //iterate through the word to guess slots
-                /*
+            	//Assigns secret word
+                secretWord = readF.readLine();         
+                	            
+             }                         
+             //Capitalizes secret word
+             secretWord = secretWord.toUpperCase();
                
-                */
-                        //update the secret work from the lines read from the file
-               
-                //close your BufferedReader object
-                readF.close();
-                //close your FileReader object
-                reads.close();
-				
+             //close your BufferedReader object
+             readF.close();
+             //close your FileReader object
+             reads.close();				
     	} 
+		
+		//Exception handling
 		catch (FileNotFoundException e){
 			System.out.println("File doesn't exist.");
 			System.err.println("FileNotFOundException: " + e.getMessage());
@@ -105,16 +105,14 @@ public class WordGuess {
         //the length of the secret word
         //output the word so far using dashes
 		for (int i = 0; i < secretWord.length(); i ++) {
-
 			wordSoFar += "-";
 		}
 		System.out.println(wordSoFar);
 
 
 		/* allow player to make guesses*/
-
 		do {
-			//?? prompt for a letter
+			//prompt for a letter
 			System.out.print(tries + " Guesses Remaining." + "\n"
 					+ "Guess A Letter (" + FLAG + " To Guess The Entire Word): ");
 			letterGuess = input.next();
@@ -122,8 +120,7 @@ public class WordGuess {
 
 			/* increment number of guesses */
 			numGuesses += 1;
-			tries -= 1;
-			//?
+			tries -= 1;		
 
 			/* player correctly guessed a letter--extract string in wordSoFar up to the letter
 			 * guessed and then append guessed letter to that string. Next, extract rest of
@@ -135,25 +132,18 @@ public class WordGuess {
 			//indexOf - returns index where the first occurrence of "letterGuess" in the String
 			//Runs code if letter guessed is in the word
 			while (index >= 0) {
-
-				//Extracts characters from the start of the word to just before the correctly guessed letter - replaces dash with letter guessed
-				
+				//Extracts characters from the start of the word to just before the correctly guessed letter - replaces dash with letter guessed				
 				updatedWord = wordSoFar.substring(0, index);
 				updatedWord += letterGuess;
 				updatedWord += wordSoFar.substring(index + 1, wordSoFar.length());
 				wordSoFar = updatedWord;
 				
 				//Starts looking for letter after first instance of letter
-				index = secretWord.indexOf(letterGuess, index + 1);
-				
+				index = secretWord.indexOf(letterGuess, index + 1);				
 			}
-
-
 
 			/* display guessed letter instead of dash */
 			System.out.println(wordSoFar + "\n");
-
-
 		} while (!letterGuess.equals(FLAG) && !wordSoFar.equals(secretWord) && tries != 0); //Do-while checks condition at end
 
 

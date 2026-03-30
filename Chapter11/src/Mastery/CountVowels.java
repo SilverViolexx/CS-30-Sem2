@@ -27,9 +27,7 @@ public class CountVowels {
 	    String fileName;
 	    String lineInFile, lowercaseText;
 	    char letter;
-	    int vowelSum = 0;
-	       
-	    //C:\Users\38207518\git\CS-30-Sem2\Chapter11\src\Mastery\Counting.txt
+	    int vowelSum = 0;	      
 
 	    /* prompt the user for the name of the file */
 	    System.out.print("Please Enter A File: ");
