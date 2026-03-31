@@ -47,7 +47,6 @@ public class CountVowels {
 	    	while ((lineInFile = readFile.readLine()) != null) {
 	    		//as lines are read convert them to lower case
 	    		lowercaseText = lineInFile.toLowerCase().replaceAll("\\W", "");
-	    		System.out.println(lowercaseText);
 	    		
 	    		//iterate through the lower case text
 	    		for (int i = 0; i < lowercaseText.length(); i ++) {
@@ -57,10 +56,7 @@ public class CountVowels {
 	    			if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u') {
 	    				//update total vowels
 	    				vowelSum += 1;
-	    				//
-	    			}
-	    			
-	    			
+	    			}    			
 	    		}
 	    	}                
 	    

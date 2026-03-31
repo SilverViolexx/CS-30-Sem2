@@ -262,14 +262,14 @@ public class StudentSemesterAverage {
 		//Waits for user to click button
 		viewFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Reset boxes for user to input data
+				clearBox();
+				
 				//Tests code for errors
 				try {
 					//Create FileReader and BufferedReader object
 					reads = new FileReader(textFile);
-					readFile = new BufferedReader(reads);
-					
-					//Reset boxes for user to input data
-					clearBox();
+					readFile = new BufferedReader(reads);	
 					
 					//Initialize variables
 					String eachLine, newLine = "";
@@ -315,6 +315,9 @@ public class StudentSemesterAverage {
 		//Waits for user to click button
 		deleteFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Reset boxes for user to input data
+				clearBox();
+				
 				//Tests code for errors
 				try {
 					//Create FileWriter and BufferedWriter object

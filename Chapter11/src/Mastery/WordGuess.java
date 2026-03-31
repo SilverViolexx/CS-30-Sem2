@@ -154,7 +154,7 @@ public class WordGuess {
 			System.out.print("What Is Your Guess: ");
 			wordGuess = input.next();
 			wordGuess = wordGuess.toUpperCase();
-		}
+		}		
 		if (tries == 0) {
 			System.out.println("Sorry, No More Guesses. You Lose.");
 		}
