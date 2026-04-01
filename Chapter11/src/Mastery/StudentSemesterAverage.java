@@ -14,42 +14,16 @@ package Mastery;
 
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import java.awt.SystemColor;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.Color;
-import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
 import java.text.DecimalFormat;
-import java.awt.event.ActionEvent;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class StudentSemesterAverage {
 
 	private JFrame frame;
-	private JTextField enterN;
-	private JTextField enterGrade;
-	private JTextField enterG2;
-	private JTextField enterSem;
-	private JTextField enterG1;
-	private JTextField enterG3;
-	private JTextField enterG4;
+	private JTextField enterN, enterGrade, enterG2, enterSem, enterG1, enterG3, enterG4;
 	private JScrollPane scrollPane;
 	private JTextArea displayInfo;
 	private String studentN, level, sem;
@@ -245,8 +219,7 @@ public class StudentSemesterAverage {
 					
 					//Reset boxes for user to input data
 					clearBox();
-				}
-				
+				}				
 				catch (FileNotFoundException e1){
 				    	System.out.println("File doesn't exist.");
 						System.err.println("FileNotFOundException: " + e1.getMessage());
