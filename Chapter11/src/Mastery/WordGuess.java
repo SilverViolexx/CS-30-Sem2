@@ -10,7 +10,6 @@ School: CHHS
 Course: Computer Programming 30
  
 */
-
 package Mastery;
 
 import java.io.BufferedReader;
@@ -29,7 +28,7 @@ public class WordGuess {
 		final String FLAG = "!";
 
 		//Create a File object with the name of your file is the parameter
-		File textFile = new File("C:\\Users\\38207518\\git\\CS-30-Sem2\\Chapter11\\src\\Mastery\\RandomWord");
+		File textFile = new File("../Chapter11/src/Mastery/RandomWord");
 		
 		//Declare a File reader object
 		FileReader reads;
@@ -96,8 +95,6 @@ public class WordGuess {
 			System.err.println("IOException: " + e.getMessage());
 		}
 
-
-
 		/* begin the game */
 		System.out.println("WordGuess game." + "\n");
 
@@ -145,9 +142,6 @@ public class WordGuess {
 			/* display guessed letter instead of dash */
 			System.out.println(wordSoFar + "\n");
 		} while (!letterGuess.equals(FLAG) && !wordSoFar.equals(secretWord) && tries != 0); //Do-while checks condition at end
-
-
-
         
 		/* finish game and display message and number of guesses */
 		if (letterGuess.equals(FLAG)) {

@@ -11,6 +11,8 @@ public class StatsP1 {
 
 	public static void main (String[] args0) {
 		//Initialize
+		//Absolute path - c:\\
+		//Relative path(for cross device - sharing files) - ../ 
 		File textFile = new File("C:\\Users\\38207518\\git\\CS-30-Sem2\\Chapter11\\src\\SkillBuilder\\test1.dat");
 		//Use both FileReader + BufferedReader
 		FileReader reads;

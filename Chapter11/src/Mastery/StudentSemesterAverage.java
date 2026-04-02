@@ -9,7 +9,6 @@ School: CHHS
 Course: Computer Programming 30
  
 */
-
 package Mastery;
 
 import java.awt.EventQueue;
@@ -179,7 +178,7 @@ public class StudentSemesterAverage {
 		});
 
 		//Create file object
-		textFile = new File("C:\\Users\\38207518\\git\\CS-30-Sem2\\Chapter11\\src\\Mastery\\GradeBook.txt");
+		textFile = new File("../Chapter11/src/Mastery/GradeBook.txt");
 		
 		//Shortens number to 2 decimal places
 		DecimalFormat df = new DecimalFormat("#0.00");
@@ -249,6 +248,7 @@ public class StudentSemesterAverage {
 					
 					//Displays that file is empty if first line of file is empty
 					if ((eachLine = readFile.readLine()) == null) {
+						
 						displayInfo.setText("Grade Book Is Empty.");
 					}
 					//Close objects
@@ -263,10 +263,10 @@ public class StudentSemesterAverage {
 					while ((eachLine = readFile.readLine()) != null) {
 						//Adds each line to a string
 						newLine = newLine + eachLine + "\n";	
+						
+						//Displays string
+						displayInfo.setText(newLine);
 					}
-					
-					//Displays string
-					displayInfo.setText(newLine);
 					
 					//Close objects
 					readFile.close();
