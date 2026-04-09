@@ -17,33 +17,49 @@ public class University {
 
 	public static void main (String[] args) {
 		
-		/*
-		//Create objects
-		Faculty person1 = new Faculty("Ava", "A", 20, "Art");
-		Staff person2 = new Staff("Bob", "B", 15, "Teacher");
+		String action;
+		Scanner input = new Scanner(System.in);
 		
-		//Display object information
-		System.out.println(person1.toString());
-		System.out.println("\n" + person2.toString());
-		*/
+		do {
+			UEmployee e = assignE();
+			System.out.print("(C)ontinue Assigning, (V)iew Employees Or (E)nd Program: ");
+			action = input.next();
+		
+			if (action.toLowerCase().equals("v") ) {
+				e.toString();
+			}
+		} while (action.toLowerCase().equals("e") == false || action.toLowerCase().equals("v"));	
+		
 	}
 	
 	public static UEmployee assignE() {
 		Scanner input = new Scanner(System.in);
-		String fName, lName, title, dep;
-		double salary;
-		
-		System.out.println("Employee First Name: ");
-		fName = input.next();
-		System.out.println("Employee Last Name: ");
-		lName = input.next();
-		System.out.println("Employee Salary: ");
-		salary = Double.parseDouble(input.next());
-		
-		System.out.println("Is The Employee A Staff: ");
-		fName = input.next();
-		
-	}
+		String fName, lName, title, dep, choice;
+		double salary;	
 	
-	
+			System.out.print("Employee First Name: ");
+			fName = input.next();
+			System.out.print("Employee Last Name: ");
+			lName = input.next();
+			System.out.print("Employee Salary: ");
+			salary = Double.parseDouble(input.next());
+		
+			System.out.print("Is The Employee A (S)taff or (F)aculty: ");
+			choice = input.next();
+		
+			if (choice.toLowerCase().equals("s")) {
+				System.out.print("Employee Job Title: ");
+				title = input.next();
+				
+				return (new Staff(fName, lName, salary, title));
+			}
+			else if(choice.toLowerCase().equals("f")) {
+				System.out.print("Employee Department: ");
+				dep = input.next();			
+				
+				return (new Faculty(fName, lName, salary, dep));
+			}
+		
+		return null;	
+	}	
 }
