@@ -23,7 +23,7 @@ public class Staff extends UEmployee{
 	public String toString() {
 		return("Empolyee Name: " + super.getFName() + " " + super.getLName() + "\n"
 				+ "Salary Amount: $" + super.getSalary() + "\n"
-				+ "Job Title: " + title);
+				+ "Job Title: " + title + "\n");
 	}
 	
 }
