@@ -3,6 +3,11 @@ package Mastery;
 public class Staff extends UEmployee{
 	private String title;
 	
+	public Staff() {
+		super();
+		title = "No title";
+	}
+	
 	//Overloading method
 	public Staff(String f, String l, double s, String t) {
 		super(f, l , s);

@@ -4,7 +4,8 @@ package SkillBuilder;
 //class has to be abstract to have abstract methods
 abstract class TestAbstract {
 
-	//children that inherit has wheels but don't know specifics - ie. # of wheels, colour
-	//
+	//abstract method - children that inherit has wheels but don't know specifics - ie. # of wheels, rim colour
+	//specifications happen in children class
 	abstract void hasWheels();
+	
 }

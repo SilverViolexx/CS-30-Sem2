@@ -32,18 +32,28 @@ public class University {
 			
 			System.out.print("\n" + prompt);
 			action = input.next();
+			action.toLowerCase();
 		
 			//Checks if user wants to view employees
-			if (action.toLowerCase().equals("v") ) {
+			if (action.equals("v") ) {
 				//Displays information of each object in arraylist
 				for (int i = 0; i < list.size(); i++) {
-					System.out.println(list.get(i).toString());
+					if(list.get(i) == null) {
+						System.out.println("Employee" + (i + 1) + " Staff Or Faculty Status Not Specified." + "\n");
+					}
+					else{
+						System.out.println(list.get(i).toString());
+					}
 				}
 				
 				System.out.print("\n" + prompt);
 				action = input.next();
 			}
-		} while (!action.toLowerCase().equals("e"));			
+			while (!action.equals("v") && !action.equals("c") && !action.equals("e")) {
+				System.out.print("Invalid option." + "\n" + prompt);
+				action = input.next();
+			}
+		} while (!action.equals("e"));			
 	}
 	
 	public static UEmployee assignE() {
@@ -62,23 +72,25 @@ public class University {
 		
 			System.out.print("Is The Employee A (S)taff or (F)aculty: ");
 			choice = input.next();
+			choice.toLowerCase();
 		
 			//Checks if employee is staff or faculty
-			if (choice.toLowerCase().equals("s")) {
+			if (choice.equals("s")) {
 				System.out.print("Employee Job Title: ");
 				title = input.next();
 				
 				//Returns object with data inputted
 				return (new Staff(fName, lName, salary, title));
 			}
-			else if(choice.toLowerCase().equals("f")) {
+			else if(choice.equals("f")) {
 				System.out.print("Employee Department: ");
 				dep = input.next();			
 				
 				//Returns object with data inputted
 				return (new Faculty(fName, lName, salary, dep));
 			}
-		
-		return null;	
+			else {
+				return null;
+			}
 	}	
 }
