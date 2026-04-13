@@ -1,61 +1,39 @@
 package Mastery;
 
 public class Car extends Vehicle{
-	private String colour;
-	private int seat, wheel;
+	private String type , colour;
 	
-	//Constructor method
+	//Constructor
 	public Car() {
-		colour = "blank";
-		seat = 0;
-		wheel = 0;
+		door = 0;
+		driveSys = "none";
 	}
 	
 	//Overloading method
-	public Car(String c, int s, int w) {
-		colour = c;
-		seat = s;
-		wheel = w;
+	public Car(int d, String sys) {
+		door = d;
+		driveSys = sys;
 	}
 	
 	//Modifier method
-	public void setColour(String c) {
-		colour = c;
+	public void setDoor(int d) {
+		door = d;
 	}
-	public void setSeat(int s) {
-		seat = s;
+	public void setDriveSys(String sys) {
+		driveSys = sys;
 	}
-	public void setWheel(int w) {
-		wheel = w;
-	}
-
+	
 	//Access method
-	public String getColour() {
-		return(colour);
+	public int getDoor() {
+		return(door);
 	}
-	public int getSeat() {
-		return(seat);
-	}
-	public int getWheel() {
-		return(wheel);
+	public String getDriveSys() {
+		return(driveSys);
 	}
 
-	@Override
-	void hasWheels() {
-		
-		
-	}
-
-	@Override
-	void hasSeats() {
-		
-		
-	}
-
-	@Override
-	void hasColour() {
-		
-		
+	//Abstract method
+	public String vehicleMake(String make) {
+		return(make);
 	}
 	
 	

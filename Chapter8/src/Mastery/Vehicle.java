@@ -4,9 +4,11 @@ package Mastery;
 abstract class Vehicle {
 
 	//Abstract method
-	abstract void hasWheels();
+	abstract String vehicleMake(String vmk);
 	
-	abstract void hasSeats();
+	abstract String vehicleModel(String vmd);
 	
-	abstract void hasColour();
+	abstract String vehicleColour(String vc);
+	
+	
 }
