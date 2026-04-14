@@ -1,38 +1,46 @@
 package Mastery;
 
 public class Car extends Vehicle{
-	private String type , colour;
-	
+	private String type, colour;
+
 	//Constructor
 	public Car() {
-		door = 0;
-		driveSys = "none";
+		type = "none";
+		colour = "blank";
 	}
-	
+		
 	//Overloading method
-	public Car(int d, String sys) {
-		door = d;
-		driveSys = sys;
+	public Car(String t, String c) {
+		type = t;
+		colour = c;
 	}
-	
+		
 	//Modifier method
-	public void setDoor(int d) {
-		door = d;
+	public void setMake(String t) {
+		type = t;
 	}
-	public void setDriveSys(String sys) {
-		driveSys = sys;
+	public void setColour(String c) {
+		colour = c;
 	}
-	
+		
 	//Access method
-	public int getDoor() {
-		return(door);
+	public String getType() {
+		return(type);
 	}
-	public String getDriveSys() {
-		return(driveSys);
+		public String getColour() {
+		return(colour);
+	}
+		
+	public String toString() {
+		return("Make & Model: " + type + "\n" 
+				+ "Colour: " + colour);
 	}
 
 	//Abstract method
-	public String vehicleMake(String make) {
+	public String vehicleType(String type) {
+		return(type);
+	}
+	public String vehicleColour(String make) {
 		return(make);
 	}
 	

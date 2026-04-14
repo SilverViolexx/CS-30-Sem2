@@ -14,6 +14,13 @@ public abstract class Employee {
 		lName = l;
 	}
 	
+	public String getFN() {
+		return(fName);
+	}
+	public String getLN() {
+		return(lName);
+	}
+	
 	public String toString() {
 		return(fName + " " + lName);
 	}

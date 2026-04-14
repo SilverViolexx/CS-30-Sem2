@@ -6,14 +6,10 @@ import java.util.Scanner;
 public class TestVehicle {
 
 	public static void main (String[] args) {
-		Car obj = new Car();
-		obj.setDoor(4);
-		obj.setDriveSys("AWD");
 		
-		//System.out.prinln(obj);
 	}
 	
-	/*
+	
 	public static Vehicle assignV() {
 		//Initialize variables
 		String action;
@@ -24,5 +20,5 @@ public class TestVehicle {
 		
 		
 		
-	}*/
+	}
 }

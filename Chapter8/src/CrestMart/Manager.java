@@ -9,9 +9,16 @@ public class Manager extends Employee{
 		yearlySalary = y;
 	}
 	
+	public String getFN() {
+		return(super.getFN());
+	}
+	
 	@Override
-	double pay(double period) {
-		return yearlySalary;
+	double pay(double weeks) {
+		double payEarned;
+		
+		payEarned = weeks * 5;
+		return(payEarned); //brackets around returned - preference, can do w/o
 	}
 	
 }

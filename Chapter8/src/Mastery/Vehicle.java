@@ -2,11 +2,9 @@ package Mastery;
 
 //Class should be inherited
 abstract class Vehicle {
-
-	//Abstract method
-	abstract String vehicleMake(String vmk);
 	
-	abstract String vehicleModel(String vmd);
+	//Abstract method
+	abstract String vehicleType(String vt);
 	
 	abstract String vehicleColour(String vc);
 	
