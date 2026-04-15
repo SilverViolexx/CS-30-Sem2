@@ -24,6 +24,10 @@ abstract class Vehicle {
 		return(brand);
 	}
 	
+	public String toString() {
+		return("Make: " + brand);
+	}
+	
 	//Abstract method
 	abstract String vehicleModel(String vmd);
 	

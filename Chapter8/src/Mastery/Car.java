@@ -39,7 +39,8 @@ public class Car extends Vehicle{
 	}
 		
 	public String toString() {
-		return("Make & Model: " + super.getBrand() + " " + model + "\n" 
+		return(super.toString() + "\n"
+				+ "Model: " + super.getBrand() + " " + model + "\n" 
 				+ "Colour: " + colour + "\n"
 				+ "Transmission Type: " + transmission);
 	}
