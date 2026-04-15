@@ -40,16 +40,19 @@ public class Car extends Vehicle{
 		
 	public String toString() {
 		return(super.toString() + "\n"
-				+ "Model: " + super.getBrand() + " " + model + "\n" 
+				+ "Model: " + " " + model + "\n" 
 				+ "Colour: " + colour + "\n"
 				+ "Transmission Type: " + transmission);
 	}
 
 	//Abstract method
-	String vehicleModel(String bnd) {
+	String vehicleType() {
+		return("Car");
+	}
+	String vehicleModel() {
 		return(model);
 	}
-	String vehicleColour(String bnd) {
+	String vehicleColour() {
 		return(colour);
 	}
 	

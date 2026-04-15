@@ -29,9 +29,11 @@ abstract class Vehicle {
 	}
 	
 	//Abstract method
-	abstract String vehicleModel(String vmd);
+	abstract String vehicleType();
 	
-	abstract String vehicleColour(String vc);
+	abstract String vehicleModel();
+	
+	abstract String vehicleColour();
 	
 	
 }

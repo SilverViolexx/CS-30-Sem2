@@ -1,8 +1,11 @@
 package Mastery;
 
+import java.text.NumberFormat;
+
 public class UEmployee {
 	private String fName, lName;
 	private double salary;
+	NumberFormat money = NumberFormat.getCurrencyInstance();
 	
 	//Constructor method - default
 	public UEmployee() {
@@ -43,7 +46,7 @@ public class UEmployee {
 	//Return employee information
 	public String toString() {
 		return("Empolyee Name: " + fName + " " + lName + "\n"
-				+ "Salary Amount: $" + salary);
+				+ "Salary Amount: " + money.format(salary));
 	}
 	
 }

@@ -14,6 +14,7 @@ Course: Computer Programming 30
 */
 package Mastery;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -32,28 +33,27 @@ public class University {
 			
 			System.out.print("\n" + prompt);
 			action = input.next();
-			action.toLowerCase();
 		
 			//Checks if user wants to view employees
-			if (action.equals("v") ) {
+			if (action.equalsIgnoreCase("v") ) {
 				//Displays information of each object in arraylist
 				for (int i = 0; i < list.size(); i++) {
 					if(list.get(i) == null) {
 						System.out.println("Employee" + (i + 1) + " Staff Or Faculty Status Not Specified." + "\n");
 					}
 					else{
-						System.out.println(list.get(i).toString());
+						System.out.println(list.get(i)); 
 					}
 				}
 				
 				System.out.print("\n" + prompt);
 				action = input.next();
 			}
-			while (!action.equals("v") && !action.equals("c") && !action.equals("e")) {
+			while (!action.equalsIgnoreCase("v") && !action.equalsIgnoreCase("c") && !action.equalsIgnoreCase("e")) {
 				System.out.print("Invalid option." + "\n" + prompt);
 				action = input.next();
 			}
-		} while (!action.equals("e"));			
+		} while (!action.equalsIgnoreCase("e"));			
 	}
 	
 	public static UEmployee assignE() {
@@ -62,35 +62,34 @@ public class University {
 		double salary;	
 		Scanner input = new Scanner(System.in);
 		
-			//Prompt user to input data
-			System.out.print("Employee First Name: ");
-			fName = input.next();
-			System.out.print("Employee Last Name: ");
-			lName = input.next();
-			System.out.print("Employee Salary: ");
-			salary = Double.parseDouble(input.next());
+		//Prompt user to input data
+		System.out.print("Employee First Name: ");
+		fName = input.next();
+		System.out.print("Employee Last Name: ");
+		lName = input.next();
+		System.out.print("Employee Salary: ");
+		salary = Double.parseDouble(input.next());
 		
-			System.out.print("Is The Employee A (S)taff or (F)aculty: ");
-			choice = input.next();
-			choice.toLowerCase();
+		System.out.print("Is The Employee A (S)taff or (F)aculty: ");
+		choice = input.next().toLowerCase();
 		
-			//Checks if employee is staff or faculty
-			if (choice.equals("s")) {
-				System.out.print("Employee Job Title: ");
-				title = input.next();
+		//Checks if employee is staff or faculty
+		if (choice.equals("s")) {
+			System.out.print("Employee Job Title: ");
+			title = input.next();
 				
-				//Returns object with data inputted
-				return (new Staff(fName, lName, salary, title));
-			}
-			else if(choice.equals("f")) {
-				System.out.print("Employee Department: ");
-				dep = input.next();			
+			//Returns object with data inputted
+			return (new Staff(fName, lName, salary, title));
+		}
+		else if(choice.equals("f")) {
+			System.out.print("Employee Department: ");
+			dep = input.next();			
 				
-				//Returns object with data inputted
-				return (new Faculty(fName, lName, salary, dep));
-			}
-			else {
-				return null;
-			}
+			//Returns object with data inputted
+			return (new Faculty(fName, lName, salary, dep));
+		}
+		else {
+			return null;
+		}
 	}	
 }

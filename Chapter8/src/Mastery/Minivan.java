@@ -33,13 +33,5 @@ public class Minivan extends Vehicle{
 	}
 
 	//Abstract method
-	String vehicleMake(String vmk) {
-		return(vmk);
-	}
-	String vehicleModel(String vmd) {
-		return(vmd);
-	}
-	String vehicleColour(String vc) {
-		return(vc);
-	}
+	
 }
