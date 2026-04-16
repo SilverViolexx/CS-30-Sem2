@@ -17,59 +17,80 @@ public class TestVehicle {
 		System.out.println("VEHICLE CATALOGUE");
 		
 		do {
-			Vehicle obj = assignV();
-
-			if (obj.vehicleType().equals("Car")) {
-				carList.add(obj);
-			}
-			else if (obj.vehicleType().equals("Truck")) {
-				truckList.add(obj);
-			}
-			else if (obj.vehicleType().equals("Minivan")) {
-				vanList.add(obj);
-			}
+			
 			
 			
 			System.out.println("\n" + prompt);
 			action = input.nextLine();
 		
 			//Checks if user wants to view employees
-			if (action.equalsIgnoreCase("v") ) {
+			if (action.equalsIgnoreCase("a")) {
+				Vehicle obj = assignV();
+
+				if (obj.vehicleType().equals("Car")) {
+					carList.add(obj);
+				}
+				else if (obj.vehicleType().equals("Truck")) {
+					truckList.add(obj);
+				}
+				else if (obj.vehicleType().equals("Minivan")) {
+					vanList.add(obj);
+				}
+			}
+			
+			else if (action.equalsIgnoreCase("v") ) {
 				System.out.println("View: (C)ars || (T)rucks || (M)inivan");
 				view = input.nextLine();
 				//Displays information of each object in arraylist
 				if (view.equalsIgnoreCase("c")) {
 					for (int i = 0; i < carList.size(); i++) {
-						if(carList.get(i) == null) {
+						if(carList.isEmpty()) {
+							System.out.println("Car Catalogue Is Empty");
+						}
+						else {
+							if(carList.get(i) == null) {
 							System.out.println("Car Information Missing." + "\n");
-						}
-						else{
-							System.out.println(carList.get(i) + "\n"); 
-						}
+							}
+							else{
+								System.out.println(carList.get(i) + "\n"); 
+							}
+						}					
 					}
 				}
 				else if (view.equalsIgnoreCase("t")) {
 					for (int i = 0; i < truckList.size(); i++) {
-						if(truckList.get(i) == null) {
+						if(truckList.isEmpty()) {
+							System.out.println("Truck Catalogue Is Empty");
+						}
+						else {
+							if(truckList.get(i) == null) {
 							System.out.println("Truck Information Missing." + "\n");
-						}
-						else{
-							System.out.println(truckList.get(i) + "\n"); 
-						}
+							}
+							else{
+								System.out.println(truckList.get(i) + "\n"); 
+							}
+						}						
 					}
 				}
 				else if (view.equalsIgnoreCase("m")) {
 					for (int i = 0; i < vanList.size(); i++) {
-						if(vanList.get(i) == null) {
-							System.out.println("Truck Information Missing." + "\n");
+						if(vanList.isEmpty()) {
+							System.out.println("Minivan Catalogue Is Empty");
 						}
-						else{
-							System.out.println(vanList.get(i) + "\n"); 
-						}
+						else {
+							if(vanList.get(i) == null) {
+							System.out.println("Minivan Information Missing." + "\n");
+							}
+							else{
+								System.out.println(vanList.get(i) + "\n"); 
+							}
+						}						
 					}
 				}
+				/*
 				System.out.println(prompt);
 				action = input.nextLine();
+				*/
 			}
 			
 			while (!action.equalsIgnoreCase("v") && !action.equalsIgnoreCase("a") && !action.equalsIgnoreCase("q")) {
@@ -105,25 +126,27 @@ public class TestVehicle {
 		System.out.print("Highway Fuel Economy(km/L): ");
 		hwyEcon = input.nextDouble();
 		
+		input.nextLine(); 
+		
 			
 		System.out.println(typePrompt);
 		type = input.next();
 			
-		if (type.equals("c")) {		
+		if (type.equalsIgnoreCase("c")) {		
 			System.out.print("Transmission Type: ");
 			transmission = input.nextLine();
 			//Returns object with data inputted
 			return (new Car(seatNum, cargoV, ctyEcon, hwyEcon, make, colour, transmission));
 		}
-		else if (type.equals("t")) {		
+		else if (type.equalsIgnoreCase("t")) {		
 			System.out.print("Towing Capacity(kg): ");
 			towCap = input.nextDouble();
 			//Returns object with data inputted
 			return (new Truck(seatNum, cargoV, ctyEcon, hwyEcon, make, colour, towCap));
 		}
-		else if (type.equals("m")) {		
+		else if (type.equalsIgnoreCase("m")) {		
 			System.out.print("Sliding Door(yes/no): ");
-			door = input.nextLine();
+			door = input.next();
 			//Returns object with data inputted
 			return (new Minivan(seatNum, cargoV, ctyEcon, hwyEcon, make, colour, door));
 		}
