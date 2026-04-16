@@ -1,37 +1,61 @@
 package Mastery;
 
 public class Minivan extends Vehicle{
-	private int seat;
-	private double cargo;
+	private String slideDoor;
+	private String model, colour;
 	
 	//Constructor
 	public Minivan() {
-		seat = 0;
-		cargo = 0;
+		slideDoor = "none";
 	}
 		
 	//Overloading method
-	public Minivan(int s, double c) {
-		seat = s;
-		cargo = c;
+	public Minivan(int seat, double cargo, double ctyFuel, double hwyFuel, String md, String c, String s) {
+		super(seat, cargo, ctyFuel, hwyFuel);		
+		model = md;
+		colour = c;
+		slideDoor = s;
 	}
 		
 	//Modifier method
-	public void setDoor(int s) {
-		seat = s;
+	public void setDoor(String s) {
+		slideDoor = s;
 	}
-	public void setDriveSys(double c) {
-		cargo = c;
+	public void setModel(String md) {
+		model = md;
 	}
+	public void setColour(String c) {
+		colour = c;
+	}	
 		
 	//Access method
-	public double getSeat() {
-		return(seat);
+	public String getDoor() {
+		return(slideDoor);
 	}
-	public double getCargo() {
-		return(cargo);
+	public String getModel() {
+		return(model);
+	}
+		public String getColour() {
+		return(colour);
+	}
+
+	public String toString() {
+		return("Make & Model: " + model + "\n" 				
+				+ "Colour: " + colour + "\n"
+				+ super.toString() + "\n"
+			+ "Sliding Door(yes/no): " + slideDoor);
 	}
 
 	//Abstract method
+	String vehicleType() {
+		return("Minivan");
+	}
+	String vehicleModel() {
+		return(model);
+	}
+	String vehicleColour() {
+		return(colour);
+	}
+		
 	
 }

@@ -6,11 +6,13 @@ public class Car extends Vehicle{
 	//Constructor
 	public Car() {
 		transmission = "none";
+		model = "none";
+		colour = "blank";
 	}
 		
 	//Overloading method
-	public Car(String b, String md, String c, String t) {
-		super(b);
+	public Car(int seat, double cargo, double ctyFuel, double hwyFuel, String md, String c, String t) {
+		super(seat, cargo, ctyFuel, hwyFuel);
 		model = md;
 		colour = c;
 		transmission = t;
@@ -39,9 +41,9 @@ public class Car extends Vehicle{
 	}
 		
 	public String toString() {
-		return(super.toString() + "\n"
-				+ "Model: " + " " + model + "\n" 
+		return("Make & Model: " + model + "\n" 				
 				+ "Colour: " + colour + "\n"
+				+ super.toString() + "\n"
 				+ "Transmission Type: " + transmission);
 	}
 
