@@ -1,6 +1,7 @@
 package Mastery;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TestVehicle {
@@ -12,6 +13,8 @@ public class TestVehicle {
 		ArrayList<Vehicle> carList = new ArrayList<>();
 		ArrayList<Vehicle> truckList = new ArrayList<>();
 		ArrayList<Vehicle> vanList = new ArrayList<>();
+		String[] actionList = {"a", "v", "q"};
+		String[] viewList = {"c", "t", "m"};
 		String prompt = "(A)dd Vehicle || (V)iew Catalogue || (Q)uit";		
 		
 		System.out.println("VEHICLE CATALOGUE");
@@ -42,14 +45,14 @@ public class TestVehicle {
 				System.out.println("View: (C)ars || (T)rucks || (M)inivan");
 				view = input.nextLine();
 				//Displays information of each object in arraylist
-				if (view.equalsIgnoreCase("c")) {
-					for (int i = 0; i < carList.size(); i++) {
-						if(carList.isEmpty()) {
-							System.out.println("Car Catalogue Is Empty");
-						}
-						else {
+				if (view.equalsIgnoreCase("c")) {			
+					if(carList.isEmpty() == true) {
+						System.out.println("Car Catalogue Is Empty");
+					}
+					else {
+						for (int i = 0; i < carList.size(); i++) {
 							if(carList.get(i) == null) {
-							System.out.println("Car Information Missing." + "\n");
+								System.out.println("Car Information Missing." + "\n");
 							}
 							else{
 								System.out.println(carList.get(i) + "\n"); 
@@ -57,14 +60,14 @@ public class TestVehicle {
 						}					
 					}
 				}
-				else if (view.equalsIgnoreCase("t")) {
-					for (int i = 0; i < truckList.size(); i++) {
-						if(truckList.isEmpty()) {
-							System.out.println("Truck Catalogue Is Empty");
-						}
-						else {
+				else if (view.equalsIgnoreCase("t")) {				
+					if(truckList.isEmpty()  == true) {
+						System.out.println("Truck Catalogue Is Empty");
+					}
+					else {
+						for (int i = 0; i < truckList.size(); i++) {
 							if(truckList.get(i) == null) {
-							System.out.println("Truck Information Missing." + "\n");
+								System.out.println("Truck Information Missing." + "\n");
 							}
 							else{
 								System.out.println(truckList.get(i) + "\n"); 
@@ -72,14 +75,14 @@ public class TestVehicle {
 						}						
 					}
 				}
-				else if (view.equalsIgnoreCase("m")) {
-					for (int i = 0; i < vanList.size(); i++) {
-						if(vanList.isEmpty()) {
-							System.out.println("Minivan Catalogue Is Empty");
-						}
-						else {
+				else if (view.equalsIgnoreCase("m")) {	
+					if(vanList.isEmpty()  == true) {
+						System.out.println("Minivan Catalogue Is Empty");
+					}
+					else {
+						for (int i = 0; i < vanList.size(); i++) {
 							if(vanList.get(i) == null) {
-							System.out.println("Minivan Information Missing." + "\n");
+								System.out.println("Minivan Information Missing." + "\n");
 							}
 							else{
 								System.out.println(vanList.get(i) + "\n"); 
@@ -93,9 +96,10 @@ public class TestVehicle {
 				*/
 			}
 			
-			while (!action.equalsIgnoreCase("v") && !action.equalsIgnoreCase("a") && !action.equalsIgnoreCase("q")) {
-				System.out.print("Invalid option." + "\n" + prompt);
-				action = input.nextLine();
+			while (!Arrays.asList(actionList).contains(action)) { //|| !Arrays.asList(viewList).contains(view)
+				System.out.println("Invalid option.");
+				break;
+				//action = input.nextLine();
 			}
 		} while (!action.equalsIgnoreCase("q"));		
 	}
@@ -126,7 +130,7 @@ public class TestVehicle {
 		System.out.print("Highway Fuel Economy(km/L): ");
 		hwyEcon = input.nextDouble();
 		
-		input.nextLine(); 
+		//input.nextLine(); 
 		
 			
 		System.out.println(typePrompt);
@@ -134,7 +138,9 @@ public class TestVehicle {
 			
 		if (type.equalsIgnoreCase("c")) {		
 			System.out.print("Transmission Type: ");
+			input.nextLine(); 
 			transmission = input.nextLine();
+
 			//Returns object with data inputted
 			return (new Car(seatNum, cargoV, ctyEcon, hwyEcon, make, colour, transmission));
 		}
