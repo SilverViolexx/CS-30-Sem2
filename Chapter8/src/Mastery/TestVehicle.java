@@ -34,12 +34,19 @@ public class TestVehicle {
 		
 		//do-while loop
 		do {
-				
 			System.out.println("\n" + prompt);
-			action = input.nextLine();
+			action = input.nextLine();	
+			action = action.toLowerCase();
+			
+			while (!Arrays.asList(actionList).contains(action)) {
+				System.out.println("Invalid option.");
+				System.out.println("\n" + prompt);
+				action = input.nextLine();
+				action = action.toLowerCase();
+			}	
 		
 			//Checks if user wants to view employees
-			if (action.equalsIgnoreCase("a")) {
+			if (action.equals("a")) {
 				Vehicle obj = assignV();
 
 				if (obj.vehicleType().equals("Car")) {
@@ -53,11 +60,12 @@ public class TestVehicle {
 				}
 			}
 			
-			else if (action.equalsIgnoreCase("v") ) {
+			else if (action.equals("v") ) {
 				System.out.println("View: (C)ars || (T)rucks || (M)inivan");
 				view = input.nextLine();
+				view = view.toLowerCase();
 				//Displays information of each object in arraylist
-				if (view.equalsIgnoreCase("c")) {	
+				if (view.equals("c")) {	
 					if(carList.isEmpty()) {
 						System.out.println("Car Catalogue Is Empty");
 					}
@@ -68,7 +76,7 @@ public class TestVehicle {
 					}
 					
 				}
-				else if (view.equalsIgnoreCase("t")) {				
+				else if (view.equals("t")) {				
 					if(truckList.isEmpty()) {
 						System.out.println("Truck Catalogue Is Empty");
 					}
@@ -78,7 +86,7 @@ public class TestVehicle {
 						}						
 					}
 				}
-				else if (view.equalsIgnoreCase("m")) {	
+				else if (view.equals("m")) {	
 					if(vanList.isEmpty()) {
 						System.out.println("Minivan Catalogue Is Empty");
 					}
@@ -94,11 +102,7 @@ public class TestVehicle {
 
 			}
 
-			while (!Arrays.asList(actionList).contains(action)) {
-				System.out.println("Invalid option.");
-				System.out.println("HELLO");
-				break;
-			}
+			
 		} while (!action.equalsIgnoreCase("q"));		
 	}
 	
@@ -106,7 +110,7 @@ public class TestVehicle {
 	public static Vehicle assignV() {
 		
 		//Initialize variables
-		String action, type, make, colour, transmission, door;
+		String type, make, colour, transmission, door;
 		int seatNum;
 		double cargoV, ctyEcon, hwyEcon, towCap;
 		String[] typeList = {"c", "t", "m"};
@@ -144,21 +148,23 @@ public class TestVehicle {
 
 			System.out.println(typePrompt);
 			type = input.nextLine();
+			type = type.toLowerCase();
 		}
 		
-		if (type.equalsIgnoreCase("c")) {		
+		if (type.equals("c")) {		
 			System.out.print("Transmission Type(Auto/Manual): ");
 			transmission = input.nextLine();
 			//Returns object with data inputted
 			return (new Car(seatNum, cargoV, ctyEcon, hwyEcon, make, colour, transmission));
 		}
-		else if (type.equalsIgnoreCase("t")) {		
+		else if (type.equals("t")) {		
 			System.out.print("Towing Capacity(kg): ");
 			towCap = input.nextDouble();
+			input.nextLine();		
 			//Returns object with data inputted
 			return (new Truck(seatNum, cargoV, ctyEcon, hwyEcon, make, colour, towCap));
 		}
-		else if (type.equalsIgnoreCase("m")) {		
+		else if (type.equals("m")) {		
 			System.out.print("Sliding Door(yes/no): ");
 			door = input.next();
 			//Returns object with data inputted
