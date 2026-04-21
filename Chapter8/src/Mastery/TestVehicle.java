@@ -107,8 +107,7 @@ public class TestVehicle {
 	}
 	
 	
-	public static Vehicle assignV() {
-		
+	public static Vehicle assignV() {	
 		//Initialize variables
 		String type, make, colour, transmission, door;
 		int seatNum;

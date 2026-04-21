@@ -18,7 +18,7 @@ public class Account {
 	public Account(double bal, String fName, String lName, String str, String c, String prov, String postal)//include street, city, province or state, postal code or zip code
 	 {
 		balance = bal;
-		cust = new Customer(fName, lName);//this constructor should reflect the new additions above, street, city, province, postal code
+		cust = new Customer(fName, lName, str, c, prov, postal);//this constructor should reflect the new additions above, street, city, province, postal code
 		acctID = fName.substring(0,1) + lName;
 		street = str;
 		city = c;
@@ -34,7 +34,7 @@ public class Account {
 	 */
 	public Account(String ID) {
 		balance = 0;
-		cust = new Customer("", "");
+		cust = new Customer("", "", "", "", "", "");
 		acctID = ID;
 	}
 
@@ -86,11 +86,12 @@ public class Account {
 
 	//Create a changeAddress() method that calls the cust object from above in order to change
 	//Street, city, province, postalCode
-
-
-
-
-	
+	public void changeAddress(String newStr, String newCty, String newPv, String newPostal) {
+		cust.setStreet(newStr);
+		cust.setCity(newCty);
+		cust.setProv(newPostal);
+		cust.setPostal(newPostal);
+	}
 	
 	/** 
 	 * Returns a true when objects have matching account ids.

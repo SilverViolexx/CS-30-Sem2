@@ -1,7 +1,7 @@
 package Mastery;
 
 public class Customer {
-	private String firstName, lastName;
+	private String firstName, lastName, street, city, province, postalCode;
 
 	//create String variables street, city, province, postal code	
 
@@ -12,24 +12,43 @@ public class Customer {
 	 * post: A Customer object has been created. 
 	 * Customer data has been initialized with parameters.
 	 */
-	public Customer(String fName, String lName) //modify constructor to include street, city, province, postal code
+	public Customer(String fName, String lName, String str, String c, String prov, String postal) //modify constructor to include street, city, province, postal code
 	{
 		firstName = fName;
 		lastName = lName;
-
-		//reflect the changes in the parameter
+		street = str;
+		city = c;
+		province = prov;
+		postalCode = postal;
 	}
 	
+	//Modifier method
+	public void setStreet(String str) {
+		street = str;
+	}
+	public void setCity(String c) {
+		city = c;
+	}
+	public void setProv(String prov) {
+		province = prov;
+	}
+	public void setPostal(String postal) {
+		postalCode = postal;
+	}
 
-	//create changeCity method that asks the user their city and records city in a variable above
-
-	//create changeStreet method that asks the user their street and records street in a variable above
-
-	//create changeProvince method that asks the user their province and records province in a variable above
-
-	//create changePostalCode method that asks the user their postal code and records postal code in a variable above
-
-
+	//Access method
+	public String getStreet() {
+		return(street);
+	}
+	public String getCity() {
+		return(city);
+	}
+	public String getProv() {
+		return(province);
+	}
+	public String getPostal() {
+		return(postalCode);
+	}
 
 	/** 
 	 * Returns a String that represents the Customer object.
@@ -38,11 +57,9 @@ public class Customer {
 	 * been returned.
 	 */
 	public String toString() {
-		String custString;
-
-		//update this string so that it contains the street, city, province, and postal code
-		custString = firstName + " " + lastName + "\n";
-	 	return(custString);
+	 	return(firstName + " " + lastName + "\n"
+	 			+ street + "\n"
+	 			+ city + " " + postalCode);
 	}
 
 }
