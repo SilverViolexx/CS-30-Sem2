@@ -2,8 +2,7 @@ package Mastery;
 
 public class PersonalAcct extends Account{
 	int MIN_BALANCE = 100;
-	int FEE = 2;
-	
+	int FEE = 2;	
 	
 	//Overloading method
 	public PersonalAcct(double amt, String fName, String lName, String str, String c, String prov, String postal) {
@@ -23,8 +22,14 @@ public class PersonalAcct extends Account{
 		}
 	}
 	
+	//Abstract method
+	String acctType() {
+		return("Personal");
+	}
+	
 	public String toStringPA() {
 		return(toString());
 	}
+
 	
 }

@@ -2,7 +2,7 @@ package Mastery;
 
 import java.text.NumberFormat;
 
-public class Account {
+abstract class Account {
 	private double balance;
 	private Customer cust;
 	private String acctID, street, city, province, postalCode;
@@ -108,6 +108,9 @@ public class Account {
 			}
 	}
 
+	//Abstract method
+	abstract String acctType();
+	
 
 	/** 
 	 * Returns a String that represents the Account object.

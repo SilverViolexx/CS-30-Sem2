@@ -22,6 +22,11 @@ public class BusinessAcct extends Account{
 		}
 	}
 	
+	//Abstract method
+	String acctType() {
+		return("Business");
+	}
+	
 	public String toStringBA() {
 		return(toString());
 	}
