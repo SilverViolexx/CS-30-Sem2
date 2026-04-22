@@ -8,6 +8,7 @@ public class TestAccount {
 	public static void main (String[] args) {
 		String acctID;
 		int actionAcc, transaction;
+		double withdraw, deposit;
 		ArrayList<Account> accList = new ArrayList<>();
 		Scanner input = new Scanner(System.in);
 		
@@ -23,31 +24,64 @@ public class TestAccount {
 		do {
 			
 			if (actionAcc == 1) {
-			Account obj = bank();
-			accList.add(obj);
-			System.out.print("ACCID: " + obj.getID());
+				Account obj = bank();
+				
+				for (int i = 0; i < accList.size(); i++) {
+					if (obj.equals(accList.get(i))) {
+						System.out.print("Account Already Exists.");
+					}
+					else {
+						
+						accList.add(obj);
+						System.out.print("ACCID: " + obj.getID() + "hello");
+					}
+				}	
 			}
 			else if (actionAcc == 2) {
 				System.out.print("ACCID: ");
 				acctID = input.nextLine();
 				
 				for (int i = 0; i < accList.size(); i++) {
-					if (acctID.equalsIgnoreCase(accList.get(i).getID())) {
+					Account account = accList.get(i);
+					if (acctID.equalsIgnoreCase(account.getID())) {
 						System.out.print("1. Withdraw" + "\n"
 								+ "2. Deposit" +"\n"
 								+ "Input Choice(1-2): ");
 						transaction = input.nextInt();
 						input.nextLine();
 						
+						if(transaction == 1) {
+							System.out.print("Enter Withdrawal Amount($): ");
+							withdraw = input.nextDouble();
+							input.nextLine();
+							account.withdrawal(withdraw);
+							System.out.print("New Balance: " + account.getBalance());
+						}
+						else if(transaction == 2) {
+							System.out.print("Enter Deposit Amount($): ");
+							deposit = input.nextDouble();
+							input.nextLine();
+							account.withdrawal(deposit);
+							System.out.print("New Balance: " + account.getBalance());
+						}						
 					}
+				}
+			}
+			/*
+			else if (actionAcc == 3) {
+				System.out.print("ACCID: ");
+				acctID = input.nextLine();
+				
+				for (int i = 0; i < accList.size(); i++) {
 					
 				}
-				
-				
 			}
+			*/
 			
 			System.out.print("Input Choice(1-4): ");
 			actionAcc = input.nextInt();
+			input.nextLine();
+			
 		} while (actionAcc != 5);
 		
 		
@@ -60,7 +94,7 @@ public class TestAccount {
 		double balance;
 		Scanner input = new Scanner(System.in);
 		
-		System.out.print("First Name: ");
+		System.out.print("\n" + "First Name: ");
 		fName = input.nextLine();
 		
 		System.out.print("Last Name: ");
@@ -70,7 +104,7 @@ public class TestAccount {
 		balance = input.nextDouble();
 		input.nextLine();	
 		
-		System.out.print("Enter Address Information" + "\n"
+		System.out.print("\n" + "Enter Address Information" + "\n"
 						+ "Street: ");
 		street = input.nextLine();
 		
@@ -87,7 +121,7 @@ public class TestAccount {
 		type = input.next();
 		
 		if (type.equalsIgnoreCase("p")) {
-			System.out.print("Personal Account Created!" + "\n"
+			System.out.print("\n" + "Personal Account Created!" + "\n"
 					+ "Minimum Of $100 Required In Account Or $2 Monthly Fee Will Apply." +"\n");
 			return (new PersonalAcct(balance, fName, lName, street, city, province, postalCode));
 		}
