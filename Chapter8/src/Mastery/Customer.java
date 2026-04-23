@@ -57,9 +57,9 @@ public class Customer {
 	 * been returned.
 	 */
 	public String toString() {
-	 	return(firstName + " " + lastName + "\n"
-	 			+ street + "\n"
-	 			+ city + " " + postalCode);
+	 	return("Account Holder's Name: " + firstName + " " + lastName + "\n"
+	 			+ "Adress: " + street + ", " + city + ", " + province + ", "
+	 			+ postalCode + "\n");
 	}
 
 }

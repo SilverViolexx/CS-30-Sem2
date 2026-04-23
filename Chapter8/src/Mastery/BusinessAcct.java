@@ -1,5 +1,7 @@
 package Mastery;
 
+import java.text.NumberFormat;
+
 public class BusinessAcct extends Account{
 	int MIN_BALANCE = 500;
 	int FEE = 10;
@@ -9,16 +11,19 @@ public class BusinessAcct extends Account{
 		super(amt, fName, lName, str, c, prov, postal);
 	}
 	
-	public String PersonalMinFee() {
+	public String BusinessMinFee() {
+		NumberFormat money = NumberFormat.getCurrencyInstance();
 		double amt = getBalance();
+		
 		if (amt < MIN_BALANCE) {
-			amt -= FEE;
-			withdrawal(amt);
-			return ("Minimum Of " + MIN_BALANCE + "Required In Account. " + FEE + "Monthly Fee Applied." + "\n"
-					+ "Balance Is: " + amt);
+			super.withdrawal(FEE);
+			amt = getBalance();
+			return ("Minimum Of " + money.format(MIN_BALANCE) + " Required In Account. " + money.format(FEE) + " Withdrawal Fee Applied." + "\n"
+					+ "New Balance: " + money.format(amt));
 		}
 		else {
-			return("There Is A Minimum Of " + MIN_BALANCE + " In The Account.");
+			return("The Required Minimum Of " + money.format(MIN_BALANCE) + " Is Met. No Fee Applied." + "\n"
+					+ "New Balance: " + money.format(amt));
 		}
 	}
 	

@@ -89,7 +89,7 @@ abstract class Account {
 	public void changeAddress(String newStr, String newCty, String newPv, String newPostal) {
 		cust.setStreet(newStr);
 		cust.setCity(newCty);
-		cust.setProv(newPostal);
+		cust.setProv(newPv);
 		cust.setPostal(newPostal);
 	}
 	
@@ -122,10 +122,7 @@ abstract class Account {
 		String accountString;
 		NumberFormat money = NumberFormat.getCurrencyInstance();
 
-		accountString = acctID + "\n";
-		accountString += cust.toString();
-		accountString += "Current balance is " + money.format(balance);
-	 	return(accountString);
+		return(cust.toString() 
+			+ "Current balance: " + money.format(balance) + "\n");
 	}
 }
-
