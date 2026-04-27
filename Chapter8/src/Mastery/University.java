@@ -16,6 +16,7 @@ package Mastery;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class University {
@@ -60,6 +61,7 @@ public class University {
 		//Initialize variables
 		String fName, lName, title, dep, choice;
 		double salary;	
+		String prompt = "Is The Employee A (S)taff or (F)aculty: ";
 		Scanner input = new Scanner(System.in);
 		
 		//Prompt user to input data
@@ -70,8 +72,15 @@ public class University {
 		System.out.print("Employee Salary: ");
 		salary = Double.parseDouble(input.next());
 		
-		System.out.print("Is The Employee A (S)taff or (F)aculty: ");
-		choice = input.next().toLowerCase();
+		System.out.print(prompt);
+		choice = input.next();
+		
+		while(!choice.equalsIgnoreCase("s") || !choice.equalsIgnoreCase("f")) {
+			System.out.println("Invalid option.");
+
+			System.out.println(prompt);
+			choice = input.nextLine();
+		}
 		
 		//Checks if employee is staff or faculty
 		if (choice.equals("s")) {
@@ -95,7 +104,32 @@ public class University {
 }
 
 /*
+Employee First Name: Amanda
+Employee Last Name: Ly
+Employee Salary: 42000
+Is The Employee A (S)taff or (F)aculty: s
+Employee Job Title: cashier
 
+(C)ontinue Assigning || (V)iew Employees || (E)nd Program: c
+Employee First Name: John
+Employee Last Name: Smith
+Employee Salary: 45000
+Is The Employee A (S)taff or (F)aculty: f
+Employee Department: R&D
+
+(C)ontinue Assigning || (V)iew Employees || (E)nd Program: v
+Empolyee Name: Amanda Ly
+Salary Amount: $42,000.00
+Job Title: cashier
+
+Empolyee Name: John Smith
+Salary Amount: $45,000.00
+Department: R&D
+
+
+(C)ontinue Assigning || (V)iew Employees || (E)nd Program: j
+Invalid option.
+(C)ontinue Assigning || (V)iew Employees || (E)nd Program: e
 
 
 
