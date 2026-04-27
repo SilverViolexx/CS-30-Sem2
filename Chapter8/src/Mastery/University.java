@@ -39,16 +39,11 @@ public class University {
 			if (action.equalsIgnoreCase("v") ) {
 				//Displays information of each object in arraylist
 				for (int i = 0; i < list.size(); i++) {
-					if(list.get(i) == null) {
-						System.out.println("Employee" + (i + 1) + " Staff Or Faculty Status Not Specified." + "\n");
-					}
-					else{
-						System.out.println(list.get(i)); 
-					}
+					System.out.println(list.get(i)); 
 				}
-				
+	
 				System.out.print("\n" + prompt);
-				action = input.next();
+				action = input.next(); 
 			}
 			while (!action.equalsIgnoreCase("v") && !action.equalsIgnoreCase("c") && !action.equalsIgnoreCase("e")) {
 				System.out.print("Invalid option." + "\n" + prompt);
@@ -69,17 +64,18 @@ public class University {
 		fName = input.next();
 		System.out.print("Employee Last Name: ");
 		lName = input.next();
-		System.out.print("Employee Salary: ");
+		System.out.print("Employee Salary($): ");
 		salary = Double.parseDouble(input.next());
 		
 		System.out.print(prompt);
 		choice = input.next();
 		
-		while(!choice.equalsIgnoreCase("s") || !choice.equalsIgnoreCase("f")) {
+		//Loops until user enters valid input
+		while(!choice.equalsIgnoreCase("s") && !choice.equalsIgnoreCase("f")) {
 			System.out.println("Invalid option.");
 
-			System.out.println(prompt);
-			choice = input.nextLine();
+			System.out.print(prompt);
+			choice = input.next();
 		}
 		
 		//Checks if employee is staff or faculty
@@ -114,6 +110,8 @@ Employee Job Title: cashier
 Employee First Name: John
 Employee Last Name: Smith
 Employee Salary: 45000
+Is The Employee A (S)taff or (F)aculty: k
+Invalid option.
 Is The Employee A (S)taff or (F)aculty: f
 Employee Department: R&D
 
@@ -130,7 +128,5 @@ Department: R&D
 (C)ontinue Assigning || (V)iew Employees || (E)nd Program: j
 Invalid option.
 (C)ontinue Assigning || (V)iew Employees || (E)nd Program: e
-
-
 
 */
